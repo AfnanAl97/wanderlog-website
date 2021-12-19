@@ -31,6 +31,9 @@ function Login() {
         event.preventDefault();
         if(values.username === "" || values.password === "") {
             setErrors(validation(values));}
+        else if(values.password.length < 5){
+            setErrors(validation(values));
+        }
         else{
            navigate("/experience")}
     }

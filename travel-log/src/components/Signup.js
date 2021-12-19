@@ -32,6 +32,12 @@ function Signup() {
         event.preventDefault();
         if(values.username === "" || values.email === "" || values.password === "") {
             setErrors(validation(values));}
+        else if(values.password.length < 5){
+            setErrors(validation(values));
+        }
+        else if(!/\S+@\S+\.\S+/.test(values.email)){
+            setErrors(validation(values));
+        }
         else{
         navigate("/experience")}
     }
