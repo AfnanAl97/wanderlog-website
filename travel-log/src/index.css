@@ -286,20 +286,70 @@ label {
 
 .post {
   justify-self: center;
-  margin-top: 80px;
+  /* margin-top: 70px; */
   padding: 16px 30px;
 }
-.post-title {
+#post-title {
+  margin-top: 90px;
   /* font-size: 25px; */
   color: black;
   margin-left: 450px;
 }
 
-.post-form {
-  font-size: 25px;
+#post-form {
+  margin-top: 20px;
+  font-size: 15px;
   /* margin-top: 10px; */
   color: rgb(114, 114, 114);
-  margin-left: 390px;
+  margin-left: 405px;
 }
 
+.guide {
+  margin-top: 30px;
+  margin-left: 255px;
+}
+
+.input1 {
+  /* margin-top: 30px; */
+  border: gray;
+  /* background-color:#ffffff; */
+  width: 700px;
+  font-size: 20px;
+  outline: none;
+  width: 50%;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: 2px solid black;
+}
+
+.input2 {
+  margin-top: 20px;
+  border: gray;
+  width: 700px;
+  font-size: 15px;
+  outline: none;
+  width: 90%;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: 2px solid black;
+}
+
+.publish {
+  margin-top: 0px;
+  margin-left: 770px;
+  font-size: 15px;
+  border-radius: 25px;
+  color: white;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #d182ff, #5c3d66);
+  box-shadow: rgba(235, 233, 233, 0.3) 0px 19px 38px,
+                rgba(207, 204, 204, 0.22) 0px 15px 12px;
+  /* margin: auto; */
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
 /* Post Style End */
