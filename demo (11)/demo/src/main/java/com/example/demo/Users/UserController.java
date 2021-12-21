@@ -6,6 +6,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path= "user")
+@CrossOrigin("*")
 public class UserController {
 
     private final UserService userService;
@@ -15,7 +16,6 @@ public class UserController {
 
     @GetMapping
     public List<User> getUsers(@RequestParam(required = false) String filter){
-        System.out.println("Hi");
         return userService.getUsers(); }
 
     @GetMapping("/{id}")
@@ -24,7 +24,6 @@ public class UserController {
     @PostMapping
     public User addUser(@RequestBody User user){
         System.out.println(user);
-        System.out.println("ddddddddddd");
         return userService.addUser(user); }
 
     @DeleteMapping("/{id}")

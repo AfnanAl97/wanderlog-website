@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "images")
+@CrossOrigin("*")
 public class ImageController {
 
     private final ImageService imageService;

@@ -6,6 +6,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "experience")
+@CrossOrigin("*")
 public class ExperienceController {
 
     private final ExperienceService experienceService;

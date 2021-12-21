@@ -29,6 +29,7 @@ public class ExperienceService {
 
         User user = userRepository.findById(experience.getUser().getId()).orElse(null);
         experience.setUser(user);
+        System.out.println(user.toString());
         return experienceRepository.save(experience); }
 
     public void deleteExperience(String id){
@@ -36,7 +37,6 @@ public class ExperienceService {
         experienceRepository.deleteById(Experience_id);
     }
 
-    //    Check these two methods!!!
     public List<Experience> getAllExpByCountryName(String name){
         return experienceRepository.findAllBycountry(name);
     }

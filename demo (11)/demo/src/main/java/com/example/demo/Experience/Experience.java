@@ -11,6 +11,7 @@ public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String title;
     private String description;
     private String tag;
     private String country;
@@ -22,8 +23,9 @@ public class Experience {
     public Experience() {
     }
 
-    public Experience(int id, String description, String tag, String country, User user) {
+    public Experience(int id, String title, String description, String tag, String country, User user) {
         this.id = id;
+        this.title = title;
         this.description = description;
         this.tag = tag;
         this.country = country;
@@ -36,6 +38,14 @@ public class Experience {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -74,6 +84,7 @@ public class Experience {
     public String toString() {
         return "Experience{" +
                 "id=" + id +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", tag='" + tag + '\'' +
                 ", country='" + country + '\'' +

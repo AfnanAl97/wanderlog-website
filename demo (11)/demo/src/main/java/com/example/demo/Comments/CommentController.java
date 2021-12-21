@@ -6,6 +6,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "comments")
+@CrossOrigin("*")
 public class CommentController {
 
     private final CommentService commentService;

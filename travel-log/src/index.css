@@ -222,9 +222,9 @@ button:active {
   width: 30%;
   padding: 16px 30px;
   font-size: 15px;
-  border-radius: 10px;
+  border-radius: 50px;
   background: #f0f0f048;
-  border: rgba(123, 120, 161, 0.13) solid 1px;
+  border: black(2, 2, 2, 0.13) solid 2px;
   color: rgb(106, 105, 109);
   margin-top: 120px;
 }
@@ -264,7 +264,8 @@ button:active {
   height: 40px;
   justify-self: center;
   margin: 1px 0;
-  background-color: #5c3d66;
+  /* background-color: #5c3d66; */
+  background: linear-gradient(to right, #d182ff, #5c3d66);
   border-radius: 25px;
   color: #ffffff;
   border: 0px;
@@ -305,40 +306,48 @@ label {
 }
 
 .guide {
-  margin-top: 30px;
-  margin-left: 255px;
+  margin-top: 40px;
+  /* margin-left: 255px; */
 }
 
 .input1 {
-  /* margin-top: 30px; */
-  border: gray;
-  /* background-color:#ffffff; */
-  width: 700px;
-  font-size: 20px;
-  outline: none;
-  width: 50%;
-  border-top-style: none;
-  border-left-style: none;
-  border-right-style: none;
-  border-bottom-style: 2px solid black;
+  margin-left: 450px;
+  border: black(2, 2, 2, 0.13) solid 2px;
+  border-radius: 10px;
+  background:#f0f0f048;
+  color: black;
+  width: 20%;
+  font-size: 18px;
+  padding: 16px 30px;
 }
 
 .input2 {
+  margin-left: 265px;
+  border: black(2, 2, 2, 0.13) solid 2px;
+  border-radius: 10px;
+  background:#f0f0f048;
+  color: black;
+  width: 10%;
+  font-size: 14px;
+  padding: 16px;
+}
+
+.input3 {
+  border: black(2, 2, 2, 0.13) solid 2px;
+  border-radius: 10px;
+  background:#f0f0f048;
+  color: black;
   margin-top: 20px;
-  border: gray;
-  width: 700px;
   font-size: 15px;
-  outline: none;
-  width: 90%;
-  border-top-style: none;
-  border-left-style: none;
-  border-right-style: none;
-  border-bottom-style: 2px solid black;
+  width: 50%;
+  padding: 90px 50px;
+  margin-left: 250px;
 }
 
 .publish {
-  margin-top: 0px;
-  margin-left: 770px;
+  margin-top: 20px;
+  /* margin-left: 999px; */
+  margin-left: 545px;
   font-size: 15px;
   border-radius: 25px;
   color: white;
@@ -352,4 +361,37 @@ label {
   cursor: pointer;
   transition: all 0.1s;
 }
+
 /* Post Style End */
+
+/* Tablet Styles */
+/* @media only screen and (min-width: 401px) and (max-width: 960px) {
+  .post,
+  #post-title,
+  #post-form,
+  .guide,
+  .input1,
+  .input2,
+  .publish {
+    width: 50%;
+  }
+} */
+
+@media only screen and (max-width: 911px) {
+  /* .cards {
+    grid-template-columns: auto;
+    justify-items: center;
+  } */
+
+  /* .post {
+    margin-right: 0%;
+    margin-top: 0%;
+    grid-template-columns: auto;
+    justify-items: center;
+  } */
+
+  .filter {
+    display: none;
+  }
+}
+
