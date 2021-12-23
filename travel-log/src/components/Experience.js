@@ -6,7 +6,7 @@ function Experience() {
     return (
         <>
         <Header/>
-        <Filter/>
+        {/* <Filter/> */}
         <div className="search">
             <input
               type="text"

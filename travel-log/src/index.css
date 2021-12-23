@@ -322,7 +322,7 @@ label {
 }
 
 .input2 {
-  margin-left: 265px;
+  margin-left: 75px;
   border: black(2, 2, 2, 0.13) solid 2px;
   border-radius: 10px;
   background:#f0f0f048;
@@ -348,6 +348,24 @@ label {
   margin-top: 20px;
   /* margin-left: 999px; */
   margin-left: 545px;
+  font-size: 15px;
+  border-radius: 25px;
+  color: white;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #d182ff, #5c3d66);
+  box-shadow: rgba(235, 233, 233, 0.3) 0px 19px 38px,
+                rgba(207, 204, 204, 0.22) 0px 15px 12px;
+  /* margin: auto; */
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.upload {
+  margin-top: 20px;
+  /* margin-left: 999px; */
+  margin-left: 25px;
   font-size: 15px;
   border-radius: 25px;
   color: white;
@@ -394,4 +412,15 @@ label {
     display: none;
   }
 }
+
+/* First of all my name is Afnan and I'm 25 years old.
+I study programming and developing java, javascript, python, html, css, xml, spring boot, react and redux langueges 
+and acctually I hate programming I really don't know why I study something I hate!
+
+And now I'm writing this letter and work on my website using react js language.
+
+My website name is Wanderlog and it's a website that help you to share your experience about any country you visit 
+and you can share photo that you took it in that country.
+
+*/
 

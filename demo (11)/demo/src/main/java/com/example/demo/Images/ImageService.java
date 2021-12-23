@@ -25,8 +25,8 @@ public class ImageService {
         return imageRepository.findById(Image_id).orElse(null);
     }
 
-    public Image addImage(Image image, Integer experience_id){
-        Experience experience = experienceRepository.findById(experience_id).orElse(null);
+    public Image addImage(Image image){
+        Experience experience = experienceRepository.findById(image.getExperience().getId()).orElse(null);
         image.setExperience(experience);
         return imageRepository.save(image);
     }

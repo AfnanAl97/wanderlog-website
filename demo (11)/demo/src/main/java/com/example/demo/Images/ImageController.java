@@ -1,6 +1,5 @@
 package com.example.demo.Images;
 
-import com.example.demo.Experience.Experience;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -22,28 +21,11 @@ public class ImageController {
     public Image getImage(@PathVariable String id){ return imageService.getImage(id); }
 
     @PostMapping
-    public Image addImage(@RequestBody Form form){
-        return imageService.addImage(form.getImage(), form.getExperience());
+    public Image addImage(@RequestBody Image image){
+        return imageService.addImage(image);
     }
 
     @DeleteMapping("/{id}")
     public void deleteImage(@PathVariable String id){ imageService.deleteImage(id); }
 }
 
-class Form {
-    private Image image;
-    private Integer experience;
-
-    public Form(Image image, Integer experience) {
-        this.image = image;
-        this.experience = experience;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public Integer getExperience() {
-        return experience;
-    }
-}

@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addPost } from "../reducers/Post/action";
+import { storage } from './firebase';
 
 function Post() {
 
@@ -11,6 +12,9 @@ function Post() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [country, setCountry] = useState("");
+    const [image, setImage] = useState(null);
+    const [url, setUrl] = useState("");
+    const [progress, setProgress] = useState(0);
 
     const handleTitle = (e) => {
         setTitle(e.target.value);
@@ -24,7 +28,7 @@ function Post() {
         setCountry(e.target.value);
     };
 
-    const handlePost = (e) => {
+    const handlePublish = (e) => {
         e.preventDefault();
 
         const data = {
@@ -46,7 +50,41 @@ function Post() {
           .catch((err) => {
               console.log(err);
           });
-    }
+    };
+
+        const handleChange = e => {
+            if(e.target.files[0]){
+                setImage(e.target.files[0]);
+            }
+        };
+
+        const handleUpload = () => {
+            const uploadTask = storage.ref(`images/${image.name}`).put(image);
+            uploadTask.on(
+                "state_changed",
+                snapshot => {
+                    const progress = Math.round(
+                        (snapshot.bytesTransferred / snapshot.totalBytes) *100
+                    );
+                    setProgress(progress);
+                },
+                error => {
+                    console.log(error);
+                },
+                () => {
+                    storage
+                       .ref("images")
+                       .child(image.name)
+                       .getDownloadURL()
+                       .then(url => {
+                           console.log(url);
+                           setUrl(url);
+                       });
+                }
+                );
+        };
+
+        console.log("image: ", image);
 
     return (
         <>
@@ -64,14 +102,6 @@ function Post() {
                 //    value={title}
                    onChange={handleTitle}
                 />
-                {/* <input 
-                   className="input2"
-                   type="text"
-                   placeholder="Title"
-                   name="title"
-                //    value={title}
-                   onChange={handleTitle}
-                /> */}
 
                 <select id="counrty" className="input2" onChange={handleOption}>
                     <option value="hide"> Country </option>
@@ -92,10 +122,24 @@ function Post() {
 
                 <button 
                    className="publish"
-                   onClick={handlePost}
+                   onClick={handlePublish}
                 >
                     Publish
                 </button>
+
+                <progress value={progress} max="100" />
+
+                <input type="file" onChange={handleChange} />
+                <button 
+                   className="upload"
+                   onClick={handleUpload}
+                >
+                    Add Image
+                </button>
+                <br />
+                {url}
+                <br />
+                <img src={url || "http://via.placeholder.com/300x400"} alt="firebase-image" />
             </form>
         </div>
         </>
@@ -103,3 +147,4 @@ function Post() {
 }
 
 export default Post;
+
