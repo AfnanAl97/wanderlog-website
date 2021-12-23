@@ -93,7 +93,7 @@ li a {
 }
 
 .app-wrapper /* Register box */{
-  margin-top: 1%;
+  margin-bottom: 4%;
   background-color: #fff;
   min-width: 450px;
   min-height: 540px;
@@ -101,9 +101,9 @@ li a {
   box-sizing: border-box;
   border-radius: 30px;
   border: rgba(123, 120, 161, 0.13) solid 1px;
-  box-shadow: 5px 10px 18px #888888;
-  /* box-shadow: rgba(0, 0, 0, 0.041) 0px 19px 38px,
-  rgba(0, 0, 0, 0.034) 0px 15px 12px; */
+  box-shadow: 5px 10px 18px #f1efef;
+  box-shadow: rgba(0, 0, 0, 0.041) 0px 19px 38px,
+  rgba(0, 0, 0, 0.034) 0px 15px 12px; 
   display: block;
 }
 
@@ -115,8 +115,8 @@ li a {
   padding: 10px;
   box-sizing: border-box;
   border-radius: 30px;
-  border: rgba(123, 120, 161, 0.13) solid 1px;
-  box-shadow: 5px 10px 18px #888888;
+  border: rgba(219, 217, 253, 0.13) solid 1px;
+  box-shadow: 5px 10px 18px #f3f0f0;
   /* box-shadow: rgba(0, 0, 0, 0.041) 0px 19px 38px,
   rgba(0, 0, 0, 0.034) 0px 15px 12px; */
   display: block;
@@ -126,6 +126,7 @@ li a {
   color: black;
   text-align: center;
   margin: 80px 0px 40px 0px;
+  /* margin-left: 500px; */
 }
 
 .username,
@@ -134,6 +135,8 @@ li a {
   margin: 20px;
   color: #969292;
   font-size: 16px;
+  /* margin-left: 500px; */
+
 }
 
 .password {
@@ -171,6 +174,7 @@ li a {
   border: none;
   cursor: pointer;
   transition: all 0.1s;
+  /* margin-left: 558px; */
 }
 
 button:active {
@@ -190,6 +194,7 @@ button:active {
   color: #8f8f8f;
   font-size: 15px;
   text-align: center;
+  /* margin-left: 500px; */
 }
 .message a {
   color: #5c3d66;
@@ -413,14 +418,4 @@ label {
   }
 }
 
-/* First of all my name is Afnan and I'm 25 years old.
-I study programming and developing java, javascript, python, html, css, xml, spring boot, react and redux langueges 
-and acctually I hate programming I really don't know why I study something I hate!
-
-And now I'm writing this letter and work on my website using react js language.
-
-My website name is Wanderlog and it's a website that help you to share your experience about any country you visit 
-and you can share photo that you took it in that country.
-
-*/
 

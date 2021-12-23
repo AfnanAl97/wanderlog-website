@@ -12,8 +12,10 @@ function Post() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [country, setCountry] = useState("");
+
+
     const [image, setImage] = useState(null);
-    const [url, setUrl] = useState("");
+    const [url, setUrl] = useState();
     const [progress, setProgress] = useState(0);
 
     const handleTitle = (e) => {
@@ -35,9 +37,11 @@ function Post() {
             title: title,
             description: description,
             country: country,
+            image: url,
             user:{
-                id:4
-            }
+                id:1
+            },
+
         };
 
         axios
@@ -58,13 +62,14 @@ function Post() {
             }
         };
 
-        const handleUpload = () => {
+        const handleUpload = (e) => {
+            e.preventDefault()
             const uploadTask = storage.ref(`images/${image.name}`).put(image);
             uploadTask.on(
                 "state_changed",
                 snapshot => {
                     const progress = Math.round(
-                        (snapshot.bytesTransferred / snapshot.totalBytes) *100
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
                     );
                     setProgress(progress);
                 },
@@ -83,8 +88,6 @@ function Post() {
                 }
                 );
         };
-
-        console.log("image: ", image);
 
     return (
         <>
@@ -137,11 +140,11 @@ function Post() {
                     Add Image
                 </button>
                 <br />
-                {url}
-                <br />
-                <img src={url || "http://via.placeholder.com/300x400"} alt="firebase-image" />
+                <img src={url} />
             </form>
         </div>
+        {/* || "http://via.placeholder.com/300x400" */}
+        {/* alt="firebase-image" */}
         </>
     )
 }

@@ -3,6 +3,7 @@ package com.example.demo.Experience;
 import com.example.demo.Users.User;
 
 import javax.persistence.*;
+import java.net.URL;
 
 @Entity
 @Table(name = "experience")
@@ -15,20 +16,27 @@ public class Experience {
     private String description;
     private String tag;
     private String country;
+    private String image;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "user_id")
     private User user;
 
+    //Test
+//    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+//    @JoinColumn(name = "image_id")
+//    private Image image;
+
     public Experience() {
     }
 
-    public Experience(int id, String title, String description, String tag, String country, User user) {
+    public Experience(int id, String title, String description, String tag, String country, String image, User user) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.tag = tag;
         this.country = country;
+        this.image = image;
         this.user = user;
     }
 
@@ -80,6 +88,14 @@ public class Experience {
         this.user = user;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "Experience{" +
@@ -89,6 +105,7 @@ public class Experience {
                 ", tag='" + tag + '\'' +
                 ", country='" + country + '\'' +
                 ", user=" + user +
+                ", image=" + image +
                 '}';
     }
 }

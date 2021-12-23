@@ -1,6 +1,10 @@
 package com.example.demo.Users;
 
+import com.example.demo.Experience.Experience;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
@@ -13,6 +17,9 @@ public class User {
     private String email;
     private String password;
 
+//    @OneToMany(mappedBy = "user")
+//    private Collection<Experience> experiences = new ArrayList<>();
+
     public User() {
     }
 
@@ -21,10 +28,11 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String password, Collection<Experience> experiences) {
         this.name = name;
         this.email = email;
         this.password = password;
+//        this.experiences = experiences;
     }
 
     public int getId() {
@@ -59,6 +67,14 @@ public class User {
         this.password = password;
     }
 
+//    public Collection<Experience> getExperiences() {
+//        return experiences;
+//    }
+//
+//    public void setExperiences(Collection<Experience> experiences) {
+//        this.experiences = experiences;
+//    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -66,6 +82,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+//                ", experiences=" + experiences +
                 '}';
     }
 }
