@@ -33,7 +33,7 @@ body {
 }
 
 #site-name {
-  color: #8632a0;
+  color: #be4f05cb;
   text-decoration: none;
 }
 
@@ -83,13 +83,28 @@ li a {
 
 /* Form Style Start */
 
+.register-image {
+  background-image: url("https://mail.google.com/mail/u/0?ui=2&ik=21a5f55996&attid=0.1&permmsgid=msg-f:1720312677369296470&th=17dfc743f532b656&view=att&disp=safe");
+  background-color: #cccccc;
+  height: 590px;
+  width: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
 .container /* Background page */{
   background: rgb(255, 255, 255);
-  width: 100%;
-  min-height: 100vh;
+  /* width: 100%; */
+  /* min-height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 43%;
+  left: 70%;
+  transform: translate(-50%, -50%);
 }
 
 .app-wrapper /* Register box */{
@@ -100,10 +115,10 @@ li a {
   padding: 10px;
   box-sizing: border-box;
   border-radius: 30px;
-  border: rgba(123, 120, 161, 0.13) solid 1px;
-  box-shadow: 5px 10px 18px #f1efef;
+  /* border: rgba(123, 120, 161, 0.13) solid 1px; */
+  /* box-shadow: 5px 10px 18px #f1efef;
   box-shadow: rgba(0, 0, 0, 0.041) 0px 19px 38px,
-  rgba(0, 0, 0, 0.034) 0px 15px 12px; 
+  rgba(0, 0, 0, 0.034) 0px 15px 12px;  */
   display: block;
 }
 
@@ -115,8 +130,8 @@ li a {
   padding: 10px;
   box-sizing: border-box;
   border-radius: 30px;
-  border: rgba(219, 217, 253, 0.13) solid 1px;
-  box-shadow: 5px 10px 18px #f3f0f0;
+  /* border: rgba(219, 217, 253, 0.13) solid 1px;
+  box-shadow: 5px 10px 18px #f3f0f0; */
   /* box-shadow: rgba(0, 0, 0, 0.041) 0px 19px 38px,
   rgba(0, 0, 0, 0.034) 0px 15px 12px; */
   display: block;
@@ -166,7 +181,8 @@ li a {
   border-radius: 25px;
   color: white;
   padding: 10px 40px;
-  background: linear-gradient(to right, #d182ff, #5c3d66);
+  /* background: linear-gradient(to right, #d182ff, #5c3d66); */
+  background: #be4f05cb;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
                 rgba(0, 0, 0, 0.22) 0px 15px 12px;
   margin: auto;
@@ -197,7 +213,7 @@ button:active {
   /* margin-left: 500px; */
 }
 .message a {
-  color: #5c3d66;
+  color: #a04509cb;
   text-decoration: none;
   cursor: pointer;
 }
@@ -209,7 +225,7 @@ button:active {
   text-align: center;
 }
 .message2 a {
-  color: #5c3d66;
+  color: #a04509cb;
   text-decoration: none;
   cursor: pointer;
 }
@@ -357,7 +373,7 @@ label {
   border-radius: 25px;
   color: white;
   padding: 10px 20px;
-  background: linear-gradient(to right, #d182ff, #5c3d66);
+  background: #be4f05cb;
   box-shadow: rgba(235, 233, 233, 0.3) 0px 19px 38px,
                 rgba(207, 204, 204, 0.22) 0px 15px 12px;
   /* margin: auto; */
@@ -375,7 +391,7 @@ label {
   border-radius: 25px;
   color: white;
   padding: 10px 20px;
-  background: linear-gradient(to right, #d182ff, #5c3d66);
+  background: #be4f05cb;
   box-shadow: rgba(235, 233, 233, 0.3) 0px 19px 38px,
                 rgba(207, 204, 204, 0.22) 0px 15px 12px;
   /* margin: auto; */
@@ -386,6 +402,188 @@ label {
 }
 
 /* Post Style End */
+
+/* Home Page Style Start */
+
+.container2 {
+  margin-top: 1%;
+  margin-left: 5%;
+  padding: 1px 16px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  row-gap: 10px;
+  column-gap: 10px;
+  margin: 3% 0 0 0;
+  row-gap: 35px;
+}
+
+.card {
+  width: 280px;
+  /* height: 350px; */
+  background: #ffffff;
+  border: rgba(123, 120, 161, 0.13) solid 1px;
+  border-radius: 30px;
+  display: grid;
+  padding: 20px;
+}
+
+.card:hover {
+  box-shadow: 0px 10px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+#countryName {
+  font-size: 18px;
+  margin-left: 110px;
+  margin-top: 0px;
+  color: rgb(78, 78, 78);
+}
+
+#name {
+  font-size: 14px;
+  margin-left: 122px;
+  margin-top: 0px;
+  color: black;
+}
+
+.card img {
+  width: 230px;
+  justify-self: center;
+  border-radius: 15px;
+}
+
+.card img,
+.card h3 {
+  cursor: pointer;
+}
+
+/* Home Page Style End */
+
+/* Experience Details Page Style Start */
+
+.details2 {
+  position:relative;
+  text-align: center;
+  color: white;
+}
+
+.details2 img {
+  margin-top: 8%;
+  width: 1242px;
+  height: 400px;
+}
+
+.image-title {
+  position: absolute;
+  top: 83%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  font-size: 35px;
+}
+
+.image-country {
+  position: absolute;
+  top: 93%;
+  left: 9%;
+  transform: translate(-50%, -50%);
+  font-size: 33px;
+}
+
+.username-part {
+  margin-top: 2%;
+  margin-left: 6%;
+  font-family: Arial, sans-serif;
+}
+
+.tips {
+  margin-left: 4%;
+}
+
+.desc-part {
+  margin-left: 4%;
+  font-size: 17px;
+  font-family: Arial, sans-serif;
+}
+
+/* Experience Details Page Style End */
+
+/* Comment Page Style Start */
+
+.seperate-page {
+  display: grid;
+  grid-template-columns: auto;
+  background-color: #ffffff;
+  width: 100%;
+  /* position: fixed; */
+  z-index: 1;
+  top: 0;
+  left: 0;
+  border-bottom: rgba(123, 120, 161, 0.13) solid 3px;
+}
+
+.seperate-page li {
+  font-size: 1.1em;
+  display: inline-block;
+}
+
+.comment-box {  
+  position: absolute;
+  top: 140%;
+  margin-left: 50px;
+  border-style: solid;
+  border-radius: 5px;
+  /* background:#f0f0f048; */
+  color: grey;
+  width: 50%;
+  font-size: 14px;
+  padding: 8px 30px;
+}
+
+.post-comment {
+  position: absolute;
+  top: 143%;
+  left: 63%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  border-radius: 5px;
+  color: white;
+  padding: 9px 12px;
+  background: #be4f05cb;
+  box-shadow: rgba(235, 233, 233, 0.3) 0px 19px 38px,
+                rgba(207, 204, 204, 0.22) 0px 15px 12px;
+  /* margin: auto; */
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+#name-comment {
+  position: absolute;
+  /* top: 146%; */
+  left: 8%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+}
+
+#body-comment {
+  position: absolute;
+  /* top: 155%; */
+  left: 6.7%;
+  /* transform: translate(-50%, -50%); */
+  color: #464646;
+  font-size: 14.5px;
+}
+
+/* Comment Page Style End */
+
 
 /* Tablet Styles */
 /* @media only screen and (min-width: 401px) and (max-width: 960px) {

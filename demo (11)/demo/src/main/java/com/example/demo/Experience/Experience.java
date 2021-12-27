@@ -3,7 +3,6 @@ package com.example.demo.Experience;
 import com.example.demo.Users.User;
 
 import javax.persistence.*;
-import java.net.URL;
 
 @Entity
 @Table(name = "experience")
@@ -13,6 +12,7 @@ public class Experience {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
+    @Column(length = 100000)
     private String description;
     private String tag;
     private String country;
@@ -21,11 +21,6 @@ public class Experience {
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "user_id")
     private User user;
-
-    //Test
-//    @ManyToOne(fetch = FetchType.EAGER, optional = true)
-//    @JoinColumn(name = "image_id")
-//    private Image image;
 
     public Experience() {
     }
@@ -56,9 +51,7 @@ public class Experience {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescription() { return description; }
 
     public void setDescription(String description) {
         this.description = description;

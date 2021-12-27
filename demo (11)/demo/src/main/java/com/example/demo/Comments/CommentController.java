@@ -31,6 +31,7 @@ public class CommentController {
 //    @PutMapping("/{id}")
 //    public void updateComment(@PathVariable String id, @RequestBody Comment data){ commentService.updateComment(id, data); }
 
+    //Get all comments by experience ID
     @GetMapping("AllComment/{id}")
     public List<Comment> getAllCommentsByExpID(@PathVariable String id){
         return commentService.getAllCommentsByExpID(id);

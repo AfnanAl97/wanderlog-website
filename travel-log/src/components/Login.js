@@ -39,6 +39,8 @@ function Login() {
     }
 
     return (
+    <>
+     <div className="register-image"></div>
         <div className="container">
             <div className="app-wrapper">
                 <div>
@@ -79,6 +81,7 @@ function Login() {
                 </form>
             </div>
         </div>
+    </>
     )
 }
 export default Login;

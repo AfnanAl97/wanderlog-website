@@ -28,11 +28,13 @@ public class ExperienceController {
     @DeleteMapping("/{id}")
     public void deleteExperience(@PathVariable String id){ experienceService.deleteExperience(id); }
 
+    //Get all experience by country name
     @GetMapping("country/{country}")
     public List<Experience> getAllExpByCountryName(@PathVariable String country){
         return experienceService.getAllExpByCountryName(country);
     }
 
+    //Get all experience by tag name
     @GetMapping("tag/{tag}")
     public List<Experience> getAllExpByTagName(@PathVariable String tag){
         return experienceService.getAllExpByTagName(tag);

@@ -1,10 +1,12 @@
-const initialState = {}
+const initialState = {
+    comment:{}
+}
 
 const commentReducer = (state = initialState, {type, payload}) => {
     switch(type) {
         case "ADD_COMMENT":
             return {
-                
+                comment: payload,
             };
         case "DELETE_COMMENT":
             return {

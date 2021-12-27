@@ -43,6 +43,8 @@ function Signup() {
     }
 
     return (
+    <>
+    <div className="register-image"></div>
         <div className="container">
             <div className="app-wrapper2">
                 <div>
@@ -93,6 +95,7 @@ function Signup() {
                 </form>
             </div>
         </div>
+    </>
     )
 }
 export default Signup;
