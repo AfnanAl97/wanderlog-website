@@ -27,7 +27,7 @@ function Search() {
   return (
     <>
     <Header/>
-    <div className="search-result"><h1>Your search result:</h1></div>
+    <div className="search-result"><h1>Your Search Results:</h1></div>
     <div className="container3">
         <div className="cards">
            {searchCountry.map((e) =>{

@@ -39,7 +39,9 @@ function Experience() {
           type="text"
           placeholder="Search for a country"
           // value={experience.country}
-          onChange={(e) => {setSearch(e.target.value.trim())}}
+          onChange={(e) => {
+            setSearch(e.target.value.trim())}
+          }
           id="search-bar"
         />
         <button 

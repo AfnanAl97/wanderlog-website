@@ -253,17 +253,21 @@ button:active {
 
 .search-btn {
   position: absolute;
-  top: 20.3%;
-  left: 62.5%;
-  /* transform: translate(-50%, -50%); */
-  width: 5%;
-  /* border: 1px solid grey; */
-  border-left: none;
-  cursor: pointer;
-  border-radius: 50px;
-  padding: 16px;
+  top: 20.4%;
+  left: 63%;
+  width: 55px;
+  height: 51px;
+  font-size: 1.8rem;
+  color: #fff;
+  border: none;
   background-color: #be4f05cb;
-  color: white;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  transition: all 0.4s linear;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
 }
 
 #search-bar {
