@@ -6,6 +6,7 @@ import Signup from './components/Signup';
 import Experience from './components/Experience';
 import Post from './components/Post';
 import ExperienceDetails from './components/ExperienceDetails';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
              <Route path = "/experience" element = {<Experience/>}/>
              <Route path = "/post" element = {<Post/>}/>
              <Route path = "/experienceDetails" element = {<ExperienceDetails/>}/>
-             {/* <Route path = "/searchCountry" element = {<SearchCountry/>}/> */}
+             <Route path = "/search/:country" element = {<Search/>}/>
            </Routes>
     </BrowserRouter>
     </>

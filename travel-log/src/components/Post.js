@@ -108,10 +108,10 @@ function Post() {
 
                 <select id="counrty" className="input2" onChange={handleOption}>
                     <option value="hide"> Country </option>
-                    <option value="riyadh">Riyadh</option>
-                    <option value="london">London</option>
-                    <option value="spain">Spain</option>
-                    <option value="korea">Korea</option>
+                    <option value="Riyadh">Riyadh</option>
+                    <option value="London">London</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Korea">Korea</option>
                 </select>
 
                 <input 

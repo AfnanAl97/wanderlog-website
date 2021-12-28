@@ -1,35 +1,61 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Header from './Header';
+import { useNavigate } from "react-router-dom";
 
 function Search() {
 
-//   const [searchCountry, setSearchCountry] = useState([]);
-//   const [country] = useParams();
-//   console.log(country);
+  const navigate = useNavigate();
+  const [searchCountry, setSearchCountry] = useState([])
 
-//   const handleSearch = () => {
-//     axios
-//     .get(`http://localhost:8080/experience/country${country}`)
-//     .then((res) => {
-//       console.log(res.data);
-//     //   setCountry(res.data);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-//   }
+  const {country} = useParams();
+  console.log(searchCountry);
+  
+  useEffect(() => {
+    axios
+    .get(`http://localhost:8080/experience/country/${country}`)
+    .then((res) => {
+      console.log(res.data);
+      setSearchCountry(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+},[])
 
   return (
-    <div className="search">
-    <input
-      type="text"
-      placeholder="Search for a country"
-      // value={experience.country}
-    //   onChange={handleSearch}
-      id="search-bar"
-    />
-</div>
+    <>
+    <Header/>
+    <div className="search-result"><h1>Your search result:</h1></div>
+    <div className="container3">
+        <div className="cards">
+           {searchCountry.map((e) =>{
+             return (
+              <div className="card">
+              <img
+                className="img"
+                src={e.image}
+                alt=""
+                onClick={() => {
+                  navigate('/experienceDetails');
+                }}
+              />
+              <h3
+                onClick={() => {
+                  navigate('/experienceDetails');
+                }}
+              >
+              {e.title}
+              </h3>
+              <p id="countryName">{e.country}</p>
+              <p id="name">{e.user.name}</p>
+            </div>
+             )
+    })}
+        </div>
+    </div>
+    </>
   )
 
 }

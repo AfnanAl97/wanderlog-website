@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import Filter from "./Filter";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import Search from './Search';
 
 function Experience() {
 
   const navigate = useNavigate();
+  const [search, setSearch] = useState();
   const [experience, setExperience] = useState([{
     image: '',
     title: '',
@@ -34,7 +34,22 @@ function Experience() {
         <>
         <Header/>
         {/* <Filter/> */}
-        <Search/>
+    <div className="search">
+        <input
+          type="text"
+          placeholder="Search for a country"
+          // value={experience.country}
+          onChange={(e) => {setSearch(e.target.value.trim())}}
+          id="search-bar"
+        />
+        <button 
+          type="submit" 
+          className="search-btn" 
+          onClick={() => {navigate(`/search/${search}`)}}
+          >
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
       <div className="container2">
         <div className="cards">
           {experience.map((e) => {
