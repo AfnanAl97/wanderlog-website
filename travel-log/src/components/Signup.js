@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import validation from "./validation";
 // import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "../reducers/SignupLogin/action";
 // import { login } from "../reducers/SignupLogin/action";
-// import { useDispatch } from "react-redux";
+
 
 function Signup() {
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     // const dispatch = useDispatch();
     const [values, setValues] = useState({
@@ -30,6 +34,8 @@ function Signup() {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
+
+
         if(values.username === "" || values.email === "" || values.password === "") {
             setErrors(validation(values));}
         else if(values.password.length < 5){

@@ -2,25 +2,48 @@ import React, { useState } from "react";
 import validation from "./validation";
 // import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addUser, addToken } from "../reducers/SignupLogin/action";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import jwt_decoded from "jwt-decode";
 // import { login } from "../reducers/SignupLogin/action";
-// import { useDispatch } from "react-redux";
 
 function Login() {
 
     const navigate = useNavigate();
-    // const dispatch = useDispatch();
-    const [values, setValues] = useState({
-        username: "",
-        password: "",
-    });
+    const dispatch = useDispatch();
+
+    const [userName, setUserName] = useState("");
+    const [Password, setPassword] = useState("");
+
+    // const [values, setValues] = useState({
+    //     username: "",
+    //     password: "",
+    // });
 
     const [errors, setErrors] = useState({});
 
-    const handleChange = (event) => {
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value,
-        });
+    // const handleChange = (event) => {
+    //     setValues({
+    //         ...values,
+    //         [event.target.name]: event.target.value,
+    //     });
+    // };
+
+    const handleUsername = (event) => {
+        setUserName(event.target.value);
+        // setUserName({
+        //     ...userName,
+        //     [event.target.name]: event.target.value,
+        // });
+    };
+
+    const handlePassword = (event) => {
+        setPassword(event.target.value);
+        // setPassword({
+        //     ...Password,
+        //     [event.target.name]: event.target.value,
+        // });
     };
 
     const handleRegister = () => {
@@ -29,13 +52,72 @@ function Login() {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        if(values.username === "" || values.password === "") {
-            setErrors(validation(values));}
-        else if(values.password.length < 5){
-            setErrors(validation(values));
+
+        const validationResult = validation(userName, Password)
+
+        if(validationResult) {
+            setErrors(validationResult);
         }
-        else{
-           navigate("/experience")}
+        else{ 
+
+        const data = {
+            "username": userName,
+            "password": Password
+        }
+
+        // const data = {
+        //     "username": values,
+        //     "password": values
+        // }
+
+        axios
+         .post("http://localhost:8080/login", data)
+         .then((res) => {
+             console.log(res.data);
+             const token = res.data.access_token;
+
+             const decoded = jwt_decoded(token);
+             console.log(decoded);
+
+             const user_action = addUser({
+                 id: decoded.id,
+                 userName: decoded.sub
+             });
+
+             const token_action = addToken(token);
+
+             dispatch(user_action);
+             dispatch(token_action);
+             console.log(user_action);
+
+             navigate("/experience")
+
+         })
+
+         .catch((err) => {
+             console.log(err);
+         });
+
+         }
+         
+        // if(userName.username === "" || Password.password === "") {
+        //     setErrors(validation(userName));
+        //     setErrors(validation(Password));}
+        // else if(Password.password.length < 5){
+        //     setErrors(validation(Password));
+        // }
+        // else{
+        //    navigate("/experience")}
+
+        // --------------------------------------------------------------------------
+
+            // if(values.username === "" || values.password === "") {
+            //     setErrors(validation(values));}
+            // else if(values.password.length < 5){
+            //     setErrors(validation(values));
+            // }
+            // else{
+            //    navigate("/experience")}
     }
 
     return (
@@ -53,8 +135,10 @@ function Login() {
                         className="input" 
                         type="text" 
                         name="username" 
-                        value={values.username}
-                        onChange={handleChange}
+                        // value={values.username}
+                        // onChange={handleChange}
+                        value={userName.username}
+                        onChange={handleUsername}
                         />
                         {errors.username && <p className="error">{errors.username}</p>}
                     </div>
@@ -65,8 +149,10 @@ function Login() {
                         className="input" 
                         type="password" 
                         name="password" 
-                        value={values.password}
-                        onChange={handleChange}
+                        // value={values.password}
+                        // onChange={handleChange}
+                        value={Password.password}
+                        onChange={handlePassword}
                         />
                         {errors.password && <p className="error">{errors.password}</p>}
                     </div>

@@ -12,10 +12,12 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
+    private Long id;
+    @Column(unique = true)
+    private String username;
     private String email;
     private String password;
+    private String role;
 
 //    @OneToMany(mappedBy = "user")
 //    private Collection<Experience> experiences = new ArrayList<>();
@@ -28,27 +30,35 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String email, String password, Collection<Experience> experiences) {
-        this.name = name;
+    public User(String username, String email, String password, String role) {
+        this.username = username;
         this.email = email;
         this.password = password;
-//        this.experiences = experiences;
+        this.role = role;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getEmail() {
@@ -67,22 +77,14 @@ public class User {
         this.password = password;
     }
 
-//    public Collection<Experience> getExperiences() {
-//        return experiences;
-//    }
-//
-//    public void setExperiences(Collection<Experience> experiences) {
-//        this.experiences = experiences;
-//    }
-
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-//                ", experiences=" + experiences +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

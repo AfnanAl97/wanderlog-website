@@ -13,7 +13,7 @@ function Experience() {
     title: '',
     country: '',
     user: {
-      name: ''
+      username: ''
     }
   }])
   // const [userName, setUserName] = useState("");
@@ -73,7 +73,7 @@ function Experience() {
                 {e.title}
                 </h3>
                 <p id="countryName">{e.country}</p>
-                <p id="name">{e.user.name}</p>
+                <p id="name">{e.user.username}</p>
               </div>
              )
            })}

@@ -20,7 +20,7 @@ function Comment() {
         const data = {
             body: body,
             user:{
-                id:3
+                id:1
             },
             experience:{
                 id:1
@@ -77,12 +77,18 @@ function Comment() {
                 <br/>
                 <br/>
                 <br/>
-                 <ul>
-                       <li id="name-comment"><h4>{e.user.name}</h4></li>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                    <ul>
+                       <li id="name-comment"><h4>{e.user.username}</h4></li>
+                    </ul>
                        <br/>
-                       <li id="body-comment">{e.body}</li>
-                       <br/>
-                 </ul>
+                    <ul> <li id="body-comment">{e.body}</li>
+                       {/* <br/> */}
+                    </ul>
                 </>
                )
            })}

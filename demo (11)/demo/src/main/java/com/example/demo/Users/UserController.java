@@ -4,31 +4,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(path= "user")
-@CrossOrigin("*")
+@RequestMapping(path="users")
 public class UserController {
 
     private final UserService userService;
 
-    @Autowired
-    public UserController(UserService userService){ this.userService = userService; }
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping
-    public List<User> getUsers(@RequestParam(required = false) String filter){
-        return userService.getUsers(); }
-
-    @GetMapping("/{id}")
-    public User getUser(@PathVariable String id){ return userService.getUser(id); }
+    public List<User> getUsers(){
+        return userService.getUsers();
+    }
 
     @PostMapping
-    public User addUser(@RequestBody User user){
-        System.out.println(user);
-        return userService.addUser(user); }
+    public User createUser(@RequestBody User user){
+        return userService.createUser(user);
+    }
+
+    @PutMapping("/{id}")
+    public void updateUser(@PathVariable String id){
+        userService.updateUser(id);
+    }
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable String id){ userService.deleteUser(id); }
 
-    @PutMapping("/{id}")
-    public void updateUser(@PathVariable String id, @RequestBody User data){ userService.updateUser(id, data); }
 }
+
+
+

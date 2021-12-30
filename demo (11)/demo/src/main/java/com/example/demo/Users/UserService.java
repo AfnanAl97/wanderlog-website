@@ -2,43 +2,64 @@ package com.example.demo.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-@Service
-public class UserService {
+import static java.lang.Long.parseLong;
 
+@Service
+public class UserService implements UserDetailsService{
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public List<User> getUsers(){ return userRepository.findAll(); }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user= userRepository.findByUsername(username);
+        if(user == null){
+            throw new UsernameNotFoundException("User not exist");
+        }
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
-    public User getUser(String id){
-        int User_id = Integer.valueOf(id);
-        return userRepository.findById(User_id).orElse(null);
+        authorities.add(new SimpleGrantedAuthority(user.getRole()));
+
+
+        return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),authorities);
     }
 
-    public User addUser(User user){
+    public List<User> getUsers(){
+        return userRepository.findAll();
+    }
+
+    public User createUser(User user){
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
-    public void deleteUser(String id){
-        int User_id = Integer.valueOf(id);
-        userRepository.deleteById(User_id);
+    public void updateUser(String id){
+        long longId = parseLong(id);
+        User user = userRepository.findById(longId).orElse(null);
+        userRepository.save(user);
     }
 
-    public void updateUser(String id, User data){
-        int User_id = Integer.valueOf(id);
-        User user = userRepository.findById(User_id).orElse(null);
 
-        if(user != null){
-            user.setName(data.getName());
-            user.setEmail(data.getEmail());
-            user.setPassword(data.getPassword());
-            userRepository.save(user);
-        }
+    public void deleteUser(String id){
+        long longId = parseLong(id);
+        userRepository.deleteById(longId);
     }
 }
+
+
