@@ -13,8 +13,8 @@ function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [userName, setUserName] = useState("");
-    const [Password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     // const [values, setValues] = useState({
     //     username: "",
@@ -31,7 +31,7 @@ function Login() {
     // };
 
     const handleUsername = (event) => {
-        setUserName(event.target.value);
+        setUsername(event.target.value);
         // setUserName({
         //     ...userName,
         //     [event.target.name]: event.target.value,
@@ -53,7 +53,7 @@ function Login() {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        const validationResult = validation(userName, Password)
+        const validationResult = validation(username, password)
 
         if(validationResult) {
             setErrors(validationResult);
@@ -61,8 +61,8 @@ function Login() {
         else{ 
 
         const data = {
-            "username": userName,
-            "password": Password
+            "username": username,
+            "password": password
         }
 
         // const data = {
@@ -137,7 +137,7 @@ function Login() {
                         name="username" 
                         // value={values.username}
                         // onChange={handleChange}
-                        value={userName.username}
+                        value={username.username}
                         onChange={handleUsername}
                         />
                         {errors.username && <p className="error">{errors.username}</p>}
@@ -151,7 +151,7 @@ function Login() {
                         name="password" 
                         // value={values.password}
                         // onChange={handleChange}
-                        value={Password.password}
+                        value={password.password}
                         onChange={handlePassword}
                         />
                         {errors.password && <p className="error">{errors.password}</p>}
