@@ -1,28 +1,18 @@
 import React, { useState } from "react";
-// import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../reducers/SignupLogin/action";
 import validateSignup from "./validateSignup";
-// import { login } from "../reducers/SignupLogin/action";
-
 
 function Signup() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const dispatch = useDispatch();
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    // const [values, setValues] = useState({
-    //     username: "",
-    //     email: "",
-    //     password: "",
-    // });
 
     const [errors, setErrors] = useState({});
 
@@ -37,13 +27,6 @@ function Signup() {
     const handlePassword = (e) => {
         setPassword(e.target.value);
     }
-
-    // const handleChange = (event) => {
-    //     setValues({
-    //         ...values,
-    //         [event.target.name]: event.target.value,
-    //     });
-    // };
 
     const handleRegister = () => {
         navigate("/")
