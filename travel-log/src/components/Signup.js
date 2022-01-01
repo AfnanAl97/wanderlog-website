@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import validation from "./validation";
 // import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../reducers/SignupLogin/action";
+import validateSignup from "./validateSignup";
 // import { login } from "../reducers/SignupLogin/action";
 
 
@@ -13,20 +13,37 @@ function Signup() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     // const dispatch = useDispatch();
-    const [values, setValues] = useState({
-        username: "",
-        email: "",
-        password: "",
-    });
+
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    // const [values, setValues] = useState({
+    //     username: "",
+    //     email: "",
+    //     password: "",
+    // });
 
     const [errors, setErrors] = useState({});
 
-    const handleChange = (event) => {
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value,
-        });
-    };
+    const handleUsername = (e) => {
+        setUsername(e.target.value);
+    }
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+    // const handleChange = (event) => {
+    //     setValues({
+    //         ...values,
+    //         [event.target.name]: event.target.value,
+    //     });
+    // };
 
     const handleRegister = () => {
         navigate("/")
@@ -35,17 +52,34 @@ function Signup() {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
+        const validationResult = validateSignup(username, email,password)
 
-        if(values.username === "" || values.email === "" || values.password === "") {
-            setErrors(validation(values));}
-        else if(values.password.length < 5){
-            setErrors(validation(values));
-        }
-        else if(!/\S+@\S+\.\S+/.test(values.email)){
-            setErrors(validation(values));
+        if(validationResult) {
+            setErrors(validationResult);
         }
         else{
-        navigate("/experience")}
+
+            const data = {
+                "username": username,
+                "email": email,
+                "password": password,
+                "role": "user"
+            }
+
+            axios 
+              .post("http://localhost:8080/users", data)
+              .then((res) => {
+                  console.log(res.data);
+                  const action = addUser(res.data);
+                  dispatch(action);
+
+                  navigate("/")
+              })
+
+              .catch((err) => {
+                  console.log(err);
+              });
+        }
     }
 
     return (
@@ -63,8 +97,8 @@ function Signup() {
                         className="input" 
                         type="text" 
                         name="username" 
-                        value={values.username}
-                        onChange={handleChange}
+                        value={username.username}
+                        onChange={handleUsername}
                         />
                         {errors.username && <p className="error">{errors.username}</p>}
                     </div>
@@ -74,8 +108,8 @@ function Signup() {
                         className="input" 
                         type="email" 
                         name="email" 
-                        value={values.email}
-                        onChange={handleChange}
+                        value={email.email}
+                        onChange={handleEmail}
                         />
                         {errors.email && <p className="error">{errors.email}</p>}
                     </div>
@@ -85,8 +119,8 @@ function Signup() {
                         className="input" 
                         type="password" 
                         name="password" 
-                        value={values.password}
-                        onChange={handleChange}
+                        value={password.password}
+                        onChange={handlePassword}
                         />
                         {errors.password && <p className="error">{errors.password}</p>}
                     </div>

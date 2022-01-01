@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import validation from "./validation";
+import validateLogin from "./validateLogin";
 // import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addUser, addToken } from "../reducers/SignupLogin/action";
@@ -53,7 +53,7 @@ function Login() {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        const validationResult = validation(username, password)
+        const validationResult = validateLogin(username, password)
 
         if(validationResult) {
             setErrors(validationResult);
