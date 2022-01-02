@@ -10,7 +10,7 @@ function ExperienceDetails() {
         title: '',
         country: '',
         user: {
-          name: ''
+          username: ''
         }
       }])
 
@@ -26,6 +26,14 @@ function ExperienceDetails() {
         });
     },[])
 
+    // const handleDelete = () => {
+    //     axios
+    //      .delete(`http://localhost:8080/experience/${experience.id}`)
+    //      .then((res) => {
+
+    //      })
+    // }
+
     return (
         <>
         <Header/>
@@ -40,9 +48,16 @@ function ExperienceDetails() {
                     />
                     <div className="image-title"><h3>{e.title}</h3></div>
                     <div className="image-country"><h6>{e.country}</h6></div>
+                    <button 
+                    type="submit"
+                    className="delete-btn"
+                    // onClick={handleDelete}
+                >
+                    <i className="fa fa-trash-o"></i>
+                </button>
                  </div>
 
-                <div className="username-part"><p>{e.user.name}</p></div> 
+                <div className="username-part"><p>{e.user.username}</p></div> 
                 <div className="tips"><h3>General tips</h3></div>                
                 <div className="desc-part"><p>{e.description}</p></div>
 

@@ -85,6 +85,7 @@ li a {
 
 .register-image {
   background-image: url("https://mail.google.com/mail/u/0?ui=2&ik=21a5f55996&attid=0.1&permmsgid=msg-f:1720312677369296470&th=17dfc743f532b656&view=att&disp=safe");
+  /* background-image: url("https://viewfinder.expedia.com/wp-content/uploads/2019/07/895081824.jpg"); */
   background-color: #cccccc;
   height: 590px;
   width: 500px;
@@ -468,7 +469,7 @@ label {
 
 .card h3 {
   font-size: 18px;
-  margin-left: 5px;
+  margin-left: 29px;
 }
 
 #countryName {
@@ -480,7 +481,7 @@ label {
 
 #name {
   font-size: 14px;
-  margin-left: 122px;
+  margin-left: 120px;
   margin-top: 0px;
   color: black;
 }
@@ -530,7 +531,7 @@ label {
 
 .username-part {
   margin-top: 2%;
-  margin-left: 6%;
+  margin-left: 4%;
   font-family: Arial, sans-serif;
 }
 
@@ -542,6 +543,15 @@ label {
   margin-left: 3%;
   font-size: 17px;
   font-family: Arial, sans-serif;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 20%;
+  left: 97%;
+  /* transform: translate(-50%, -50%); */
+  font-size: 25px;
+  cursor: pointer;
 }
 
 /* Experience Details Page Style End */
@@ -580,9 +590,9 @@ label {
 
 .post-comment {
   position: absolute;
-  top: 143%;
-  left: 63%;
-  transform: translate(-50%, -50%);
+  top: 140%;
+  left: 61%;
+  /* transform: translate(-50%, -50%); */
   font-size: 15px;
   border-radius: 5px;
   color: white;

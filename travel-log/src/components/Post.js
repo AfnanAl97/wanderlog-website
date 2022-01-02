@@ -1,13 +1,20 @@
 import Header from './Header';
 import { useState } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../reducers/Post/action";
 import { storage } from './firebase';
 
 function Post() {
 
     const dispatch = useDispatch();
+
+    const state = useSelector((state) => {
+        return {
+            user: state.usersReducer.user,
+            token: state.usersReducer.token
+        }
+    })
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -39,7 +46,7 @@ function Post() {
             country: country,
             image: url,
             user:{
-                id:1
+                id: state.user.id
             },
 
         };

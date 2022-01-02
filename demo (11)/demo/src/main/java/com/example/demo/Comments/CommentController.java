@@ -28,8 +28,8 @@ public class CommentController {
     @DeleteMapping("/{id}")
     public void deleteComment(@PathVariable String id){ commentService.deleteComment(id); }
 
-//    @PutMapping("/{id}")
-//    public void updateComment(@PathVariable String id, @RequestBody Comment data){ commentService.updateComment(id, data); }
+    @PutMapping
+    public Comment updateComment( @RequestBody Comment data){ return commentService.updateComment(data); }
 
     //Get all comments by experience ID
     @GetMapping("AllComment/{id}")

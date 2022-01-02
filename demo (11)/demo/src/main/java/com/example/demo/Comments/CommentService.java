@@ -42,15 +42,16 @@ public class CommentService {
         commentRepository.deleteById(Comment_id);
     }
 
-//    public void updateComment(String id, Comment data){
-//        int Comment_id = Integer.valueOf(id);
-//        Comment comment = commentRepository.findById(Comment_id).orElse(null);
-//
-//        if(comment != null){
-//            comment.setBody(data.getBody());
-//            commentRepository.save(comment);
-//        }
-//    }
+    public Comment updateComment(Comment data){
+        int Comment_id = data.getId();
+        Comment comment = commentRepository.findById(Comment_id).orElse(null);
+
+        if(comment != null){
+            comment.setBody(data.getBody());
+            commentRepository.save(comment);
+        }
+        return comment;
+    }
 
     public List<Comment> getAllCommentsByExpID(String id){
         int Experience_id = Integer.valueOf(id);
