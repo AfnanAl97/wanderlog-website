@@ -140,9 +140,13 @@ function Post() {
                     Publish
                 </button>
 
-                <progress value={progress} max="100" />
+                <progress className="upload-line" value={progress} max="100" />
 
-                <input type="file" onChange={handleChange} />
+                <input 
+                  type="file" 
+                  className="choose-img" 
+                  onChange={handleChange}
+                />
                 <button 
                    className="upload"
                    onClick={handleUpload}
