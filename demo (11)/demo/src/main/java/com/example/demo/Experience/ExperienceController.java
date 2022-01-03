@@ -17,8 +17,15 @@ public class ExperienceController {
     @GetMapping
     public List<Experience> getExperiences(@RequestParam(required = false) String filter){ return experienceService.getExperiences(); }
 
-    @GetMapping("/{id}")
-    public Experience getExperience(@PathVariable String id){ return experienceService.getExperience(id); }
+    @GetMapping("/{username}")
+    public List<Experience> getExperience(@PathVariable String username){
+        return experienceService.getExperience(username);
+    }
+
+    @GetMapping("getOne/{id}")
+    public Experience getExperienceById(@PathVariable String id){
+        return experienceService.getExperienceById(id);
+    }
 
     @PostMapping
     public Experience addExperience(@RequestBody Experience experience){

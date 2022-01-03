@@ -20,14 +20,14 @@ public class ExperienceService {
 
     public List<Experience> getExperiences(){ return experienceRepository.findAll(); }
 
-    public Experience getExperience(String id){
-        int Experience_id = Integer.valueOf(id);
-        return experienceRepository.findById(Experience_id).orElse(null);
+    public List<Experience> getExperience(String username){
+        return experienceRepository.findAllByUser_username(username);
     }
 
     public Experience addExperience(Experience experience){
-
-        User user = userRepository.findById(experience.getUser().getId()).orElse(null);
+        System.out.println(experience.getUser().getUsername());
+        User user = userRepository.findByUsername(experience.getUser().getUsername());
+        System.out.println(user);
         experience.setUser(user);
         System.out.println(user.toString());
         return experienceRepository.save(experience); }
@@ -43,5 +43,9 @@ public class ExperienceService {
 
     public List<Experience> getAllExpByTagName(String name){
         return experienceRepository.findAllBytag(name);
+    }
+
+    public Experience getExperienceById(String id) {
+        return experienceRepository.findById(Integer.valueOf(id)).orElse(null);
     }
 }

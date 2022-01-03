@@ -34,7 +34,10 @@ public class CommentService {
         User user = userRepository.findById(comment.getUser().getId()).orElse(null);
         comment.setExperience(experience);
         comment.setUser(user);
-        return commentRepository.save(comment);
+        commentRepository.save(comment);
+        experience.addComment(comment);
+        System.out.println(experience);
+        return comment;
     }
 
     public void deleteComment(String id){

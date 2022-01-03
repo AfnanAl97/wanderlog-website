@@ -7,6 +7,7 @@ import Experience from './components/Experience';
 import Post from './components/Post';
 import ExperienceDetails from './components/ExperienceDetails';
 import Search from './components/Search';
+import UserProfile from './components/UserProfile';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
              <Route path = "/post" element = {<Post/>}/>
              <Route path = "/experienceDetails" element = {<ExperienceDetails/>}/>
              <Route path = "/search/:country" element = {<Search/>}/>
+             <Route path = "/userprofile" element = {<UserProfile/>}/>
            </Routes>
     </BrowserRouter>
     </>

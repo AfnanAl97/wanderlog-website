@@ -10,6 +10,7 @@ function Post() {
     const dispatch = useDispatch();
 
     const state = useSelector((state) => {
+        console.log(state)
         return {
             user: state.usersReducer.user,
             token: state.usersReducer.token
@@ -46,10 +47,12 @@ function Post() {
             country: country,
             image: url,
             user:{
-                id: state.user.id
+                username: state.user.userName
             },
 
         };
+        console.log(data);
+        console.log(state.token);
 
         axios
           .post(`http://localhost:8080/experience`, data)

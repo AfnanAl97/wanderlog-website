@@ -1,11 +1,9 @@
 import Header from './Header';
-import Comment from './Comment';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useSelector } from "react-redux";
+import axios from 'axios';
 
-function ExperienceDetails() {
-
+function UserProfile() {
 
     const state = useSelector((state) => {
         console.log(state)
@@ -14,6 +12,7 @@ function ExperienceDetails() {
             token: state.usersReducer.token
         }
     })
+
     const [experienceDetails, setExperienceDetails] = useState([{
         image: '',
         title: '',
@@ -38,18 +37,10 @@ function ExperienceDetails() {
         });
     },[])
 
-    // const handleDelete = () => {
-    //     axios
-    //      .delete(`http://localhost:8080/experience/${experience.id}`)
-    //      .then((res) => {
-
-    //      })
-    // }
-
     return (
         <>
         <Header/>
-            {experienceDetails.map((e) => {
+        {experienceDetails.map((e) => {
                 return (
                 <>
                  <div className="details2">
@@ -73,18 +64,12 @@ function ExperienceDetails() {
                 {console.log(e.user.username)}
                 <div className="tips"><h3>General tips</h3></div>                
                 <div className="desc-part"><p>{e.description}</p></div>
-
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <Comment/>
-
                 </>
-                )
-            })}
-        </>
+        
+            )
+        })}
+       </>
     )
 }
 
-export default ExperienceDetails;
+export default UserProfile;

@@ -1,8 +1,11 @@
 package com.example.demo.Experience;
 
+import com.example.demo.Comments.Comment;
 import com.example.demo.Users.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "experience")
@@ -21,6 +24,10 @@ public class Experience {
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("experience")
+    private List<Comment> comment;
 
     public Experience() {
     }
@@ -87,6 +94,18 @@ public class Experience {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<Comment> getComment() {
+        return comment;
+    }
+
+    public void setComment(List<Comment> comment) {
+        this.comment = comment;
+    }
+
+    public void addComment(Comment comment){
+        this.comment.add(comment);
     }
 
     @Override

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Filter from "./Filter";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 function Experience() {
 
@@ -73,7 +74,13 @@ function Experience() {
                 {e.title}
                 </h3>
                 <p id="countryName">{e.country}</p>
-                <p id="name">{e.user.username}</p>
+                <p 
+                  id="name"
+                  onClick={() => {
+                  navigate('/userprofile');
+                }} 
+                 >{e.user.username}
+                </p>
               </div>
              )
            })}
