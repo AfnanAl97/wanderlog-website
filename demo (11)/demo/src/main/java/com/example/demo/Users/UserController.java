@@ -1,5 +1,6 @@
 package com.example.demo.Users;
 
+import com.example.demo.Experience.Experience;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -18,6 +19,11 @@ public class UserController {
     @GetMapping
     public List<User> getUsers(){
         return userService.getUsers();
+    }
+
+    @GetMapping("getOne/{username}")
+    public User getUserByUsername(@PathVariable String username){
+        return userService.getUserByUsername(username);
     }
 
     @PostMapping

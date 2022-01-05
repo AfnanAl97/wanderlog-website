@@ -9,6 +9,5 @@ import java.util.List;
 public interface ExperienceRepository extends JpaRepository<Experience, Integer>{
     List<Experience> findAllBycountry(String country);
     List<Experience> findAllBytag(String tag);
-
     List <Experience> findAllByUser_username(String username);
 }

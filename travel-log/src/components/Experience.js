@@ -17,6 +17,7 @@ function Experience() {
       username: ''
     }
   }])
+
   // const [userName, setUserName] = useState("");
 
   useEffect(() => {
@@ -63,12 +64,13 @@ function Experience() {
                   src={e.image}
                   alt=""
                   onClick={() => {
-                    navigate('/experienceDetails');
+                    navigate(`/experienceDetails/${e.id}`);
                   }}
+                  
                 />
                 <h3
                   onClick={() => {
-                    navigate('/experienceDetails');
+                    navigate(`/experienceDetails/${e.id}`);
                   }}
                 >
                 {e.title}
@@ -77,7 +79,7 @@ function Experience() {
                 <p 
                   id="name"
                   onClick={() => {
-                  navigate('/userprofile');
+                    navigate(`/userprofile/${e.user.username}`);
                 }} 
                  >{e.user.username}
                 </p>

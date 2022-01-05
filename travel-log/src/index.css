@@ -375,6 +375,7 @@ label {
   position: absolute;
   top: 40%;
   left: 18%;
+  width: 40%;
   border: none;
   font-size: 20px;
   border-top-style: hidden;
@@ -413,6 +414,9 @@ label {
   position: absolute;
   top: 50%;
   left: 18%;
+  width: 50%;
+  height: 100px;
+  padding: 90px 50px;
   border: none;
   font-size: 20px;
   outline: none;
@@ -544,7 +548,7 @@ label {
 
 .details2 img {
   margin-top: 8%;
-  width: 1242px;
+  width: 1226px;
   height: 400px;
 }
 
@@ -568,6 +572,7 @@ label {
   margin-top: 2%;
   margin-left: 4%;
   font-family: Arial, sans-serif;
+  cursor: pointer;
 }
 
 .tips {
