@@ -30,12 +30,14 @@ public class CommentService {
     }
 
     public Comment addComment(Comment comment){
+        System.out.println(comment);
         Experience experience = experienceRepository.findById(comment.getExperience().getId()).orElse(null);
-        User user = userRepository.findById(comment.getUser().getId()).orElse(null);
+        User user = userRepository.findByUsername(comment.getUser().getUsername());
         comment.setExperience(experience);
         comment.setUser(user);
         commentRepository.save(comment);
         experience.addComment(comment);
+        experienceRepository.save(experience);
         System.out.println(experience);
         return comment;
     }

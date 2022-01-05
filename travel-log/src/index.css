@@ -666,6 +666,13 @@ label {
 
 /* Comment Page Style End */
 
+/* Pop Up Alert Style Start */
+
+.pop-up {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
+/* Pop Up Alert Style End */
+
 
 /* Tablet Styles */
 /* @media only screen and (min-width: 401px) and (max-width: 960px) {

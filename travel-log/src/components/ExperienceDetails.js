@@ -10,6 +10,7 @@ function ExperienceDetails() {
 
     const navigate = useNavigate();
 
+    let flag = 0;
     const state = useSelector((state) => {
         // console.log(state)
         return {
@@ -22,7 +23,7 @@ function ExperienceDetails() {
 
     const [loading, setLoading] = useState(false);
 
-    const {id} = useParams();
+    const { id } = useParams();
     // console.log(id);
 
     const [data, setData] = useState();
@@ -30,53 +31,78 @@ function ExperienceDetails() {
     //   console.log(data);
 
     useEffect(() => {
-        axios 
-        .get(`http://localhost:8080/experience/getOne/${id}`)
-        .then((res) => {
-            setData(res.data);
-            console.log(res.data);
-            setLoading(true);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    },[])
+        axios
+            .get(`http://localhost:8080/experience/getOne/${id}`)
+            .then((res) => {
+                setData(res.data);
+                console.log(res.data);
+                setLoading(true);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [])
 
     return (
         <>
-        <Header/>
-                {loading ? 
+            <Header />
+            {loading ?
                 <>
-                 <div className="details2">
-                    <img
-                      className="img"
-                      src={data.image}
-                      alt=""
-                    />
-                    <div className="image-title"><h3>{data.title}</h3></div>
-                    <div className="image-country"><h6>{data.country}</h6></div>
-                 </div>
+                    <div className="details2">
+                        <img
+                            className="img"
+                            src={data.image}
+                            alt=""
+                        />
+                        <div className="image-title"><h3>{data.title}</h3></div>
+                        <div className="image-country"><h6>{data.country}</h6></div>
+                    </div>
                     <p
-                      className="username-part"
-                      onClick={() => {
-                        navigate(`/userprofile/${data.user.username}`);
-                      }} 
+                        className="username-part"
+                        onClick={() => {
+                            navigate(`/userprofile/${data.user.username}`);
+                        }}
                     >{data.user.username}
                     </p>
-                {/* {console.log(data.user.username)} */}
-                <div className="tips"><h3>General tips</h3></div>                
-                <div className="desc-part"><p>{data.description}</p></div>
+                    {/* {console.log(data.user.username)} */}
+                    <div className="tips"><h3>General tips</h3></div>
+                    <div className="desc-part"><p>{data.description}</p></div>
 
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <Comment/>
-                </>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                    <Comment />
+                    { (data.comment.length != 0) ?
+                        <>
+                            {data.comment.map((e) => {
+                                return (
+                                    <>
+                                        <ul>
+                                            <li id="name-comment"><h4>{e.user.username}</h4></li>
+                                        </ul>
+                                        <br />
+                                        <ul> <li id="body-comment">{e.body}</li>
+                                            <br />
+                                        </ul>
+
+                                    </>
+                                )
+                            })}
+
+                        </>
+                        : ""}
+                
+                
+                
+                
+                
+
+                    </>
                 : <h1>loading</h1>}
-
-                </>
-                )
+        </>
+    )
 }
 
 export default ExperienceDetails;

@@ -5,6 +5,7 @@ import { addUser, addToken } from "../reducers/SignupLogin/action";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import jwt_decoded from "jwt-decode";
+import Swal from 'sweetalert2';
 
 function Login() {
 
@@ -69,6 +70,13 @@ function Login() {
 
          .catch((err) => {
              console.log(err);
+             Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You dont have account!',
+                showConfirmButton: false,
+                timer: 1500
+              })
          });
 
          }

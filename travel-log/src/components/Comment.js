@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { addComment } from "../reducers/comment/action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from 'react-router-dom';
 
 function Comment() {
 
@@ -9,6 +10,16 @@ function Comment() {
 
     const [body, setBody] = useState("");
     const [comment, setComment] = useState([]);
+    const {id} = useParams();
+    const state = useSelector((state) => {
+      console.log(state);
+      return {
+        user: state.usersReducer.user,
+        token: state.usersReducer.token
+      }
+    })
+
+    console.log(state.user);
 
     const handleComment = (e) => {
         setBody(e.target.value);
@@ -20,11 +31,11 @@ function Comment() {
         const data = {
             body: body,
             user:{
-                id:1
+                username: state.user.userName
             },
             experience:{
-                id:1
-            }
+                id: id
+            },
         };
 
         axios
@@ -68,7 +79,7 @@ function Comment() {
         >
              Post
         </button>
-
+{/* 
         <div className="display-comment">
            {comment.map((e) => {
                return (
@@ -87,12 +98,12 @@ function Comment() {
                     </ul>
                        <br/>
                     <ul> <li id="body-comment">{e.body}</li>
-                       {/* <br/> */}
+                       <br/>
                     </ul>
                 </>
                )
            })}
-        </div>
+        </div> */}
     </>
     )
 }

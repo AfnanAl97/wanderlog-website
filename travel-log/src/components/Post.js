@@ -4,10 +4,14 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../reducers/Post/action";
 import { storage } from './firebase';
+import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 function Post() {
 
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const state = useSelector((state) => {
         console.log(state)
@@ -60,6 +64,16 @@ function Post() {
               console.log(res.data);
               const action = addPost(res.data)
               dispatch(action);
+
+            Swal.fire({
+              icon: 'success',
+              className: "pop-up",
+              title: 'Your post has been added',
+              showConfirmButton: false,
+              timer: 1500
+              })
+
+              navigate("/experience")
           })
           .catch((err) => {
               console.log(err);
@@ -122,6 +136,11 @@ function Post() {
                     <option value="London">London</option>
                     <option value="Spain">Spain</option>
                     <option value="Korea">Korea</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Jeddah">Jeddah</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Italia">Italia</option>
                 </select>
 
                 <input 

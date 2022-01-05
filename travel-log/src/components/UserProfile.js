@@ -2,7 +2,7 @@ import Header from './Header';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-// import Swal from 'sweetalert2/src/sweetalert2.js';
+import Swal from 'sweetalert2';
 
 function UserProfile() {
 
@@ -32,6 +32,14 @@ function UserProfile() {
          .delete(`http://localhost:8080/experience/${e}`)
          .then((res) => {
            console.log(res.data);
+          
+          Swal.fire({
+            icon: 'success',
+            className: "pop-up",
+            title: 'Your post has been deleted',
+            showConfirmButton: false,
+            timer: 1500
+          })
          })
          .catch((err) => {
            console.log(err);
