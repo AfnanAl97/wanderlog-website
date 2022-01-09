@@ -5,10 +5,13 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Swal from 'sweetalert2';
 
 function ExperienceDetails() {
 
     const navigate = useNavigate();
+
+    const currentUser = JSON.parse(localStorage.getItem('user'));
 
     let flag = 0;
     const state = useSelector((state) => {
@@ -43,6 +46,26 @@ function ExperienceDetails() {
             });
     }, [])
 
+    const handleDelete = (e) => {
+        console.log(e);
+          axios
+           .delete(`http://localhost:8080/comments/${e}`)
+           .then((res) => {
+             console.log(res.data);
+            
+            Swal.fire({
+              icon: 'success',
+              className: "pop-up",
+              title: 'Your post has been deleted',
+              showConfirmButton: false,
+              timer: 1500
+            })
+           })
+           .catch((err) => {
+             console.log(err);
+           });
+      }
+
     return (
         <>
             <Header />
@@ -74,11 +97,27 @@ function ExperienceDetails() {
                     <br />
 
                     <Comment />
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                     { (data.comment.length != 0) ?
                         <>
                             {data.comment.map((e) => {
                                 return (
                                     <>
+                                    {currentUser.userName == e.user.username ? (
+                                        <button 
+                                           type="submit"
+                                           className="delete-btn2"
+                                           onClick={()=>{handleDelete(e.id)}}
+                                        >
+                                              <i className="fa fa-trash-o"></i>
+                                        </button>
+                                        ) : (
+                                            ''
+                                    )}
                                         <ul>
                                             <li id="name-comment"><h4>{e.user.username}</h4></li>
                                         </ul>
@@ -86,6 +125,8 @@ function ExperienceDetails() {
                                         <ul> <li id="body-comment">{e.body}</li>
                                             <br />
                                         </ul>
+
+                                        <br/>
 
                                     </>
                                 )

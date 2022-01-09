@@ -1,16 +1,24 @@
 import Header from './Header';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { BiDotsVertical } from "react-icons/bi";
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
 
 function UserProfile() {
 
     const [data, setData] = useState();
 
+    const navigate = useNavigate();
+
     const {username} = useParams();
 
     const [loading, setLoading] = useState(false);
+
+    const currentUser = JSON.parse(localStorage.getItem('user'));
+
+    console.log(currentUser);
 
     useEffect(() => {
         axios 
@@ -40,6 +48,30 @@ function UserProfile() {
             showConfirmButton: false,
             timer: 1500
           })
+
+          navigate("/experience")
+         })
+         .catch((err) => {
+           console.log(err);
+         });
+    }
+
+    const handleEdit = (e) => {
+      console.log(e);
+        axios
+         .put(`http://localhost:8080/experience/${e}`)
+         .then((res) => {
+           console.log(res.data);
+          
+          Swal.fire({
+            icon: 'success',
+            className: "pop-up",
+            title: 'Your post has been update',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+          navigate("/experience")
          })
          .catch((err) => {
            console.log(err);
@@ -62,13 +94,40 @@ function UserProfile() {
                   />
                   <div className="image-title"><h3>{e.title}</h3></div>
                   <div className="image-country"><h6>{e.country}</h6></div>
-                  <button 
-                  type="submit"
-                  className="delete-btn"
-                  onClick={()=>{handleDelete(e.id)}}
-              >
-                  <i className="fa fa-trash-o"></i>
-              </button>
+              {currentUser.userName == username ? (
+
+                <div className="dropdown">
+                   <button className="menu-btn"><BiDotsVertical/></button>
+                   <div className="dropdown-content">
+                     <ul>
+                     <li 
+                       type="submit"
+                       className="delete-btn"
+                       onClick={()=>{handleDelete(e.id)}}
+                     >
+                       
+                       <i className="fa fa-trash-o">Delete </i>
+                 
+                     </li>
+                     
+                     <li 
+                       type="submit"
+                       className="edit-btn"
+                       onClick={() => {
+                        navigate("/updateexp");
+                      }}
+                     >
+
+                       <i class="fa fa-pencil-square-o" aria-hidden="true">Update</i>
+                 
+                     </li>
+                     </ul>
+                   </div>
+                </div>
+
+              ) : (
+                ''
+              )}
                </div>
 
               <div className="username-part"><p>{username}</p></div> 
@@ -88,3 +147,4 @@ function UserProfile() {
 }
 
 export default UserProfile;
+

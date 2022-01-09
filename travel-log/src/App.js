@@ -8,6 +8,7 @@ import Post from './components/Post';
 import ExperienceDetails from './components/ExperienceDetails';
 import Search from './components/Search';
 import UserProfile from './components/UserProfile';
+import UpdateExp from './components/UpdateExp';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
              <Route path = "/experienceDetails/:id" element = {<ExperienceDetails/>}/>
              <Route path = "/search/:country" element = {<Search/>}/>
              <Route path = "/userprofile/:username" element = {<UserProfile/>}/>
+             <Route path = "/updateexp" element = {<UpdateExp/>}/>
            </Routes>
     </BrowserRouter>
     </>

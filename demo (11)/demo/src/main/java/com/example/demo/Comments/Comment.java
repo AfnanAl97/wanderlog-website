@@ -2,6 +2,8 @@ package com.example.demo.Comments;
 
 import com.example.demo.Experience.Experience;
 import com.example.demo.Users.User;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -14,8 +16,9 @@ public class Comment {
     private int id;
     private String body;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "experience_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Experience experience;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)

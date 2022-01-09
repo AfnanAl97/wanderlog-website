@@ -43,6 +43,7 @@ public class CommentService {
     }
 
     public void deleteComment(String id){
+        System.out.println(id);
         int Comment_id = Integer.valueOf(id);
         commentRepository.deleteById(Comment_id);
     }

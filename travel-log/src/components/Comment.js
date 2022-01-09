@@ -50,17 +50,17 @@ function Comment() {
           });
     }
 
-    useEffect(() => {
-        axios
-        .get(`http://localhost:8080/comments`)
-        .then((res) => {
-          console.log(res.data);
-          setComment(res.data)
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      },[])
+    // useEffect(() => {
+    //     axios
+    //     .get(`http://localhost:8080/comments`)
+    //     .then((res) => {
+    //       console.log(res.data);
+    //       setComment(res.data)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    //   },[])
 
     return (
     <>

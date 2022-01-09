@@ -141,9 +141,10 @@ function Post() {
                     <option value="Paris">Paris</option>
                     <option value="Japan">Japan</option>
                     <option value="Italia">Italia</option>
+                    <option value="Hawaii">Hawaii</option>
                 </select>
 
-                <input 
+                <textarea
                    className="input3"
                    type="text"
                    placeholder="Tell us your experience..."
@@ -159,21 +160,24 @@ function Post() {
                     Publish
                 </button>
 
-                <progress className="upload-line" value={progress} max="100" />
+                {/* <progress className="upload-line" value={progress} max="100" /> */}
 
-                <input 
-                  type="file" 
-                  className="choose-img" 
-                  onChange={handleChange}
-                />
+            <div className="fileUpload" >
+                <label htmlFor="up0" className="hovertext" data-hover="Click here to choose an image"><i class="fa fa-plus" aria-hidden="true" ></i> </label>
+                {/* <i class="fa fa-plus" aria-hidden="true" ></i> */}
+                <input type="file" id="up0" onChange={handleChange}/>
+            </div>
+            <div className="icon-style">
                 <button 
-                   className="upload"
+                   className="hovertext"
+                   data-hover="Click here to download the image"
                    onClick={handleUpload}
                 >
-                    Add Image
+                 <i class="fa fa-picture-o" aria-hidden="true"></i>
                 </button>
+            </div>
                 <br />
-                <img src={url} />
+                <img src={url} className="post-img"/>
             </form>
         </div>
         {/* || "http://via.placeholder.com/300x400" */}

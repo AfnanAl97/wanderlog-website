@@ -3,6 +3,8 @@ package com.example.demo.Experience;
 import com.example.demo.Comments.Comment;
 import com.example.demo.Users.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,8 +27,9 @@ public class Experience {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "experience")
     @JsonIgnoreProperties("experience")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Comment> comment;
 
     public Experience() {

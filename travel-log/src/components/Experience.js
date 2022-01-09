@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Filter from "./Filter";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import Footer from './Footer';
 import { useDispatch, useSelector } from "react-redux";
 
 function Experience() {
@@ -88,6 +89,7 @@ function Experience() {
            })}
         </div>
       </div>
+      <Footer/>
         </>
     )
 }
