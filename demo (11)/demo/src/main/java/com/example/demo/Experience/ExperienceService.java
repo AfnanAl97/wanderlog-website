@@ -1,5 +1,6 @@
 package com.example.demo.Experience;
 
+import com.example.demo.Comments.Comment;
 import com.example.demo.Users.User;
 import com.example.demo.Users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,19 @@ public class ExperienceService {
     public void deleteExperience(String id){
         int Experience_id = Integer.valueOf(id);
         experienceRepository.deleteById(Experience_id);
+    }
+
+    public Experience updateExperience(String id, Experience data){
+        int Experience_id = Integer.valueOf(id);
+        Experience experience = experienceRepository.findById(Experience_id).orElse(null);
+
+        if(experience != null){
+            experience.setTitle(data.getTitle());
+            experience.setDescription(data.getDescription());
+            experience.setImage(data.getImage());
+            experienceRepository.save(experience);
+        }
+        return experience;
     }
 
     public List<Experience> getAllExpByCountryName(String name){

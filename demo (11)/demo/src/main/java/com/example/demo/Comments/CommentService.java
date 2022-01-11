@@ -22,7 +22,9 @@ public class CommentService {
         this.userRepository = userRepository;
     }
 
-    public List<Comment> getComments(){ return commentRepository.findAll(); }
+    public List<Comment> getComments(){
+        System.out.println("hgggg");
+        return commentRepository.findAll(); }
 
     public Comment getComment(String id){
         int Comment_id = Integer.valueOf(id);
@@ -48,8 +50,19 @@ public class CommentService {
         commentRepository.deleteById(Comment_id);
     }
 
-    public Comment updateComment(Comment data){
-        int Comment_id = data.getId();
+//    public Comment updateComment(Comment data){
+//        int Comment_id = data.getId();
+//        Comment comment = commentRepository.findById(Comment_id).orElse(null);
+//
+//        if(comment != null){
+//            comment.setBody(data.getBody());
+//            commentRepository.save(comment);
+//        }
+//        return comment;
+//    }
+
+    public Comment updateComment(String id, Comment data){
+        int Comment_id = Integer.valueOf(id);
         Comment comment = commentRepository.findById(Comment_id).orElse(null);
 
         if(comment != null){

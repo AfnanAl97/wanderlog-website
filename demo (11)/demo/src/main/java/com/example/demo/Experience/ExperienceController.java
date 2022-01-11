@@ -1,5 +1,6 @@
 package com.example.demo.Experience;
 
+import com.example.demo.Comments.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -34,6 +35,12 @@ public class ExperienceController {
 
     @DeleteMapping("/{id}")
     public void deleteExperience(@PathVariable String id){ experienceService.deleteExperience(id); }
+
+    @PutMapping("/{id}")
+    public Experience updateExperience(@PathVariable String id, @RequestBody Experience data){
+        System.out.println(id);
+        System.out.println(data);
+        return experienceService.updateExperience(id, data); }
 
     //Get all experience by country name
     @GetMapping("country/{country}")

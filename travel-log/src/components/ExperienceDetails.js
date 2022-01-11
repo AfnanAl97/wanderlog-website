@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Swal from 'sweetalert2';
+import { BiDotsVertical } from "react-icons/bi";
 
 function ExperienceDetails() {
 
@@ -25,6 +26,12 @@ function ExperienceDetails() {
     // console.log(state.user.userName);
 
     const [loading, setLoading] = useState(false);
+
+    const [body, setBody] = useState("");
+
+    const handleBody = (e) => {
+        setBody(e.target.value);
+    };
 
     const { id } = useParams();
     // console.log(id);
@@ -56,7 +63,7 @@ function ExperienceDetails() {
             Swal.fire({
               icon: 'success',
               className: "pop-up",
-              title: 'Your post has been deleted',
+              title: 'Your comment has been deleted',
               showConfirmButton: false,
               timer: 1500
             })
@@ -65,6 +72,26 @@ function ExperienceDetails() {
              console.log(err);
            });
       }
+
+    const handleUpdate = (e) => {
+        console.log(e);
+        axios
+         .put(`http://localhost:8080/comments/${e}`)
+         .then((res) => {
+           console.log(res.data);
+          
+          Swal.fire({
+            icon: 'success',
+            className: "pop-up",
+            title: 'Your comment has been updated',
+            showConfirmButton: false,
+            timer: 1500
+          })
+         })
+         .catch((err) => {
+           console.log(err);
+         });
+    }
 
     return (
         <>
@@ -95,7 +122,6 @@ function ExperienceDetails() {
                     <br />
                     <br />
                     <br />
-
                     <Comment />
                 <br/>
                 <br/>
@@ -108,13 +134,40 @@ function ExperienceDetails() {
                                 return (
                                     <>
                                     {currentUser.userName == e.user.username ? (
-                                        <button 
-                                           type="submit"
-                                           className="delete-btn2"
-                                           onClick={()=>{handleDelete(e.id)}}
-                                        >
-                                              <i className="fa fa-trash-o"></i>
-                                        </button>
+                                          <div className="dropdown2">
+                                              <button className="menu-btn2"><BiDotsVertical/></button>
+                                                  <div className="dropdown-content2">
+                                                        <ul>
+                                                            <li 
+                                                               type="submit"
+                                                               className="delete-btn22"
+                                                               onClick={()=>{handleDelete(e.id)}}
+                                                            >
+                    
+                                                               <i className="fa fa-trash-o">Delete </i>
+              
+                                                            </li>
+                  
+                                                             <li 
+                                                               type="submit"
+                                                               className="edit-btn2"
+                                                               onClick={() => {
+                                                            //     <input 
+                                                            //     className="edit-title-input" 
+                                                            //     type="text" 
+                                                            //     name="body" 
+                                                            //     onChange={handleBody}
+                                                            //   />
+                                                                   handleUpdate(e.id)
+                                                                }}
+                                                             >
+
+                                                                <i class="fa fa-pencil-square-o" aria-hidden="true">Update</i>
+              
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            </div>
                                         ) : (
                                             ''
                                     )}

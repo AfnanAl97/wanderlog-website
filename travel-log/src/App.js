@@ -22,7 +22,7 @@ function App() {
              <Route path = "/experienceDetails/:id" element = {<ExperienceDetails/>}/>
              <Route path = "/search/:country" element = {<Search/>}/>
              <Route path = "/userprofile/:username" element = {<UserProfile/>}/>
-             <Route path = "/updateexp" element = {<UpdateExp/>}/>
+             <Route path = "/updateexp/:id" element = {<UpdateExp/>}/>
            </Routes>
     </BrowserRouter>
     </>

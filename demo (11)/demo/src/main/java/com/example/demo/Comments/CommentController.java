@@ -1,5 +1,6 @@
 package com.example.demo.Comments;
 
+import com.example.demo.Experience.Experience;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -15,7 +16,7 @@ public class CommentController {
     public CommentController(CommentService commentService){ this.commentService = commentService; }
 
     @GetMapping
-    public List<Comment> getComments(@RequestParam(required = false) String filter){ return commentService.getComments(); }
+    public List<Comment> getComments(){ return commentService.getComments(); }
 
     @GetMapping("/{id}")
     public Comment getComment(@PathVariable String id){ return commentService.getComment(id); }
@@ -28,8 +29,14 @@ public class CommentController {
     @DeleteMapping("/{id}")
     public void deleteComment(@PathVariable String id){ commentService.deleteComment(id); }
 
-    @PutMapping
-    public Comment updateComment( @RequestBody Comment data){ return commentService.updateComment(data); }
+//    @PutMapping
+//    public Comment updateComment( @RequestBody Comment data){ return commentService.updateComment(data); }
+
+    @PutMapping("/{id}")
+    public Comment updateComment(@PathVariable String id, @RequestBody Comment data){
+        System.out.println(id);
+        System.out.println(data);
+        return commentService.updateComment(id, data); }
 
     //Get all comments by experience ID
     @GetMapping("AllComment/{id}")

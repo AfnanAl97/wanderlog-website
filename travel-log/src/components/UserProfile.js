@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { BiDotsVertical } from "react-icons/bi";
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
 
 function UserProfile() {
 
@@ -56,28 +55,6 @@ function UserProfile() {
          });
     }
 
-    const handleEdit = (e) => {
-      console.log(e);
-        axios
-         .put(`http://localhost:8080/experience/${e}`)
-         .then((res) => {
-           console.log(res.data);
-          
-          Swal.fire({
-            icon: 'success',
-            className: "pop-up",
-            title: 'Your post has been update',
-            showConfirmButton: false,
-            timer: 1500
-          })
-
-          navigate("/experience")
-         })
-         .catch((err) => {
-           console.log(err);
-         });
-    }
-
     return (
       <>
       <Header/>
@@ -114,7 +91,7 @@ function UserProfile() {
                        type="submit"
                        className="edit-btn"
                        onClick={() => {
-                        navigate("/updateexp");
+                        navigate(`/updateexp/${e.id}`);
                       }}
                      >
 

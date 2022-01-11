@@ -142,6 +142,7 @@ function Post() {
                     <option value="Japan">Japan</option>
                     <option value="Italia">Italia</option>
                     <option value="Hawaii">Hawaii</option>
+                    <option value="India">India</option>
                 </select>
 
                 <textarea

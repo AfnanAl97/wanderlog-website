@@ -23,11 +23,11 @@ public class Experience {
     private String country;
     private String image;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "experience")
+    @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy = "experience")
     @JsonIgnoreProperties("experience")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Comment> comment;
