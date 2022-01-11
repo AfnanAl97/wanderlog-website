@@ -74,9 +74,15 @@ function ExperienceDetails() {
       }
 
     const handleUpdate = (e) => {
+        // e.preventDefault();
         console.log(e);
+
+        const data = {
+           body: body
+        };
+
         axios
-         .put(`http://localhost:8080/comments/${e}`)
+         .put(`http://localhost:8080/comments/${e}`, data)
          .then((res) => {
            console.log(res.data);
           
@@ -134,40 +140,27 @@ function ExperienceDetails() {
                                 return (
                                     <>
                                     {currentUser.userName == e.user.username ? (
-                                          <div className="dropdown2">
-                                              <button className="menu-btn2"><BiDotsVertical/></button>
-                                                  <div className="dropdown-content2">
-                                                        <ul>
-                                                            <li 
-                                                               type="submit"
-                                                               className="delete-btn22"
-                                                               onClick={()=>{handleDelete(e.id)}}
-                                                            >
+                                        <>
+                                            <button 
+                                                type="submit"
+                                                className="delete-btn22"
+                                                onClick={()=>{handleDelete(e.id)}}
+                                            >
                     
-                                                               <i className="fa fa-trash-o">Delete </i>
+                                              <i className="fa fa-trash-o"> </i>
               
-                                                            </li>
-                  
-                                                             <li 
-                                                               type="submit"
-                                                               className="edit-btn2"
-                                                               onClick={() => {
-                                                            //     <input 
-                                                            //     className="edit-title-input" 
-                                                            //     type="text" 
-                                                            //     name="body" 
-                                                            //     onChange={handleBody}
-                                                            //   />
-                                                                   handleUpdate(e.id)
-                                                                }}
-                                                             >
+                                            </button>
 
-                                                                <i class="fa fa-pencil-square-o" aria-hidden="true">Update</i>
+                                            <button
+                                                type="submit"
+                                                className="edit-btn2"
+                                                onClick={() => {handleUpdate(e.id)}}
+                                            >
+
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
               
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                            </div>
+                                            </button>
+                                        </>
                                         ) : (
                                             ''
                                     )}
@@ -175,7 +168,16 @@ function ExperienceDetails() {
                                             <li id="name-comment"><h4>{e.user.username}</h4></li>
                                         </ul>
                                         <br />
-                                        <ul> <li id="body-comment">{e.body}</li>
+                                        <ul> 
+                                            <li id="body-comment">  
+                                             <input 
+                                                className="edit-title-input" 
+                                                type="text" 
+                                                name="body" 
+                                                placeholder={e.body}
+                                                onChange={handleBody}
+                                            />      
+                                            </li>
                                             <br />
                                         </ul>
 
@@ -187,12 +189,6 @@ function ExperienceDetails() {
 
                         </>
                         : ""}
-                
-                
-                
-                
-                
-
                     </>
                 : <h1>loading</h1>}
         </>

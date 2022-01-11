@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -61,9 +62,9 @@ public class UserService implements UserDetailsService{
     }
 
 
-    public void deleteUser(String id){
-        long longId = parseLong(id);
-        userRepository.deleteById(longId);
+    @Transactional
+    public void deleteUser(String username){
+        userRepository.deleteByUsername(username);
     }
 }
 

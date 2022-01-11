@@ -55,6 +55,28 @@ function UserProfile() {
          });
     }
 
+    const handleDeleteAccount = (e) => {
+      console.log(e);
+      axios
+      .delete(`http://localhost:8080/users/${e}`)
+      .then((res) => {
+        console.log(res.data);
+       
+       Swal.fire({
+         icon: 'success',
+         className: "pop-up",
+         title: 'Your account has been deleted',
+         showConfirmButton: false,
+         timer: 1500
+       })
+
+       navigate("/")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+
     return (
       <>
       <Header/>
@@ -115,6 +137,17 @@ function UserProfile() {
               </>
               )
           })}
+        {currentUser.userName == username ? (
+            <button 
+              type="submit"
+              className="delete-account"
+              onClick={()=>{handleDeleteAccount(username)}}
+            >    
+              Delete Account   
+            </button>
+           ) : (
+           ''
+           )} 
 
       </>
               : <h1>loading</h1>}

@@ -38,18 +38,18 @@ function Search() {
                 src={e.image}
                 alt=""
                 onClick={() => {
-                  navigate('/experienceDetails');
+                  navigate(`/experienceDetails/${e.id}`);
                 }}
               />
               <h3
                 onClick={() => {
-                  navigate('/experienceDetails');
+                  navigate(`/experienceDetails/${e.id}`);
                 }}
               >
               {e.title}
               </h3>
               <p id="countryName">{e.country}</p>
-              <p id="name">{e.user.name}</p>
+              <p id="name">{e.user.username}</p>
             </div>
              )
     })}

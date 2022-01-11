@@ -36,8 +36,10 @@ public class UserController {
         userService.updateUser(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable String id){ userService.deleteUser(id); }
+    @DeleteMapping("/{username}")
+    public void deleteUser(@PathVariable String username){
+        System.out.println(username);
+        userService.deleteUser(username); }
 
 }
 

@@ -839,57 +839,32 @@ label {
   cursor: pointer;
   border: none;
   outline: none;
-  background-color: white;
-}
-
-.dropdown2{
-  position: absolute;
-  display: inline-block;
-  /* top: 140.9%;
-  left: 50.5%; */
-  /* top: 140.9%; */
-  left: 44.5%;
-  border-radius: 50px;
-}
-
- .menu-btn2{
-  color: black;
-  border-radius: 2px;
-  padding: 0% 0%;
-  font-size: 25px;
-  border: none;
-  cursor: pointer;
-}
-
-.dropdown-content2 {
-  display: none;
-  color: black;
-  position: absolute;
-  background-color: rgba(223, 223, 223, 0.795);
-  min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  margin-right: 100px;
 }
 
 .delete-btn22 {
-  font-size: 25px;
+  font-size: 20px;
   cursor: pointer;
   margin-left: 30px;
   border:none;
   outline:none;
   text-align: center;
   border-radius: 2px; 
+  left: 50.5%;
+  position: absolute;
+  background-color: white;
 }
 
 .edit-btn2 {
-  font-size: 25px;
+  background-color: white;
+  font-size: 20px;
   cursor: pointer;
   margin-right: 105px;
   border:none;
   outline:none;
   text-align: center;
   border-radius: 2px; 
+  left: 56.5%;
+  position: absolute;
 }
 
 .delete-btn22 i{
@@ -898,17 +873,6 @@ label {
   right: 40%;
 }
 
-.delete-btn22 p{
-  vertical-align: middle;
-  font-size: 20px;
-  display: inline-block;
-}
-
-.dropdown-content2 p:hover {background-color: rgba(187, 187, 187, 0.795)}
-
-.dropdown2:hover .dropdown-content2 {
-  display: block;
-}
 /* 
 .delete-delete-btn2 {
   position: absolute;
@@ -921,6 +885,25 @@ label {
 } */
 
 /* Experience Details Page Style End */
+
+/* User Profile Page Style Start */
+
+.delete-account {
+  position: absolute;
+  /* top: 80%; */
+  left: 1%;
+  margin-left: 545px;
+  font-size: 15px;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 12px;
+  background: #be4f05cb;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+/* User Profile Page Style End */
 
 /* Update Experience Page Style Start */
 
@@ -963,16 +946,16 @@ label {
 
 .edit-title-input{
   position: relative;
-  top: 6px;
-  right: 22%;
+  /* top: 0%; */
+  right: 1%;
   height: 32px;
-  font-size: 20px;
+  font-size: 15px;
   outline: none;
   width: 50%;
   border-top-style: none;
   border-left-style: none;
   border-right-style: none;
-  border-bottom-style: 2px solid black;
+  border-bottom-style: none;
   margin-bottom: 10px;
 }
 

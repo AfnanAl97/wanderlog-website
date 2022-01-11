@@ -25,6 +25,7 @@ public class Experience {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy = "experience")
