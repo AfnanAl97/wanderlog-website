@@ -42,4 +42,22 @@ class UserRepositoryTest {
         assertEquals(email, result.getEmail());
         assertNotEquals("b@b.com", result.getEmail());
     }
+
+    @Test
+    void itShouldUpdateUser() {
+        User user = new User("a@a.com", "123");
+        userRepository.save(user);
+        user.setEmail("b@b.com");
+        userRepository.save(user);
+        assertEquals(user.getEmail(), "b@b.com");
+    }
+
+    @Test
+    void itShouldDeleteUser() {
+        User user = new User("a@a.com", "123");
+        userRepository.save(user);
+        userRepository.delete(user);
+        User result = userRepository.findById(user.getId()).orElse(null);
+        assertNull(result);
+    }
 }
