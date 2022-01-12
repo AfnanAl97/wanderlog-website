@@ -67,6 +67,8 @@ function ExperienceDetails() {
               showConfirmButton: false,
               timer: 1500
             })
+
+            window.location.reload(false);
            })
            .catch((err) => {
              console.log(err);
@@ -128,7 +130,7 @@ function ExperienceDetails() {
                     <br />
                     <br />
                     <br />
-                    <Comment />
+                    <Comment setData={setData} data={data}/>
                 <br/>
                 <br/>
                 <br/>
@@ -150,7 +152,7 @@ function ExperienceDetails() {
                                               <i className="fa fa-trash-o"> </i>
               
                                             </button>
-
+                                    
                                             <button
                                                 type="submit"
                                                 className="edit-btn2"
@@ -171,7 +173,7 @@ function ExperienceDetails() {
                                         <ul> 
                                             <li id="body-comment">  
                                              <input 
-                                                className="edit-title-input" 
+                                                className="edit-comment-input" 
                                                 type="text" 
                                                 name="body" 
                                                 placeholder={e.body}

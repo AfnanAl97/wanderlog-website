@@ -49,7 +49,13 @@ function Search() {
               {e.title}
               </h3>
               <p id="countryName">{e.country}</p>
-              <p id="name">{e.user.username}</p>
+              <p 
+                id="name"
+                onClick={() => {
+                  navigate(`/userprofile/${e.user.username}`)
+                }}
+
+              >{e.user.username}</p>
             </div>
              )
     })}

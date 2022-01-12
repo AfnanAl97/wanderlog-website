@@ -3,10 +3,14 @@ import axios from 'axios';
 import { addComment } from "../reducers/comment/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-function Comment() {
+function Comment({setData, data}) {
 
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const [body, setBody] = useState("");
     const [comment, setComment] = useState([]);
@@ -28,7 +32,7 @@ function Comment() {
     const postComment = (e) => {
         e.preventDefault();
 
-        const data = {
+        const commentData = {
             body: body,
             user:{
                 username: state.user.userName
@@ -39,11 +43,24 @@ function Comment() {
         };
 
         axios
-          .post(`http://localhost:8080/comments`, data)
+          .post(`http://localhost:8080/comments`, commentData)
           .then((res) => {
-              console.log(res.data);
-              const action = addComment(res.data)
-              dispatch(action);
+
+            data.comment =  [...data.comment, res.data]
+            setData(data)
+       
+
+              Swal.fire({
+                icon: 'success',
+                className: "pop-up",
+                title: 'Your comment has been added',
+                showConfirmButton: false,
+                timer: 1500
+              })
+
+              window.location.reload(false);
+
+            //   navigate(`/experienceDetails/${data.experience.id}`)
           })
           .catch((err) => {
               console.log(err);
