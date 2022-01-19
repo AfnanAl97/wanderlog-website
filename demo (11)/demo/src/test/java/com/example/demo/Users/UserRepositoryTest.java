@@ -16,6 +16,7 @@ class UserRepositoryTest {
         this.userRepository = userRepository;
     }
 
+    
     @Test
     void itShouldFindUser() {
         User user = new User("a@a.com", "123");

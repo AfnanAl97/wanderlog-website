@@ -69,21 +69,22 @@ function Comment({setData, data}) {
 
     return (
     <>
-        <div className="seperate-page"></div>
-        <input 
-          className="comment-box"
-          type="text"
-          placeholder="Share your thoughts!"
-          name="body"
-          onChange={handleComment}
-        />
+        <div className="seperate-page">
+          <input 
+            className="comment-box"
+            type="text"
+            placeholder="Share your thoughts!"
+            name="body"
+            onChange={handleComment}
+          />
 
-        <button 
-          className="post-comment"
-          onClick={postComment}
-        >
+          <button 
+            className="post-comment"
+            onClick={postComment}
+          >
              Post
-        </button>
+          </button>
+        </div>
 {/* 
         <div className="display-comment">
            {comment.map((e) => {

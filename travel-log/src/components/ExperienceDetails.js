@@ -112,8 +112,8 @@ function ExperienceDetails() {
                             src={data.image}
                             alt=""
                         />
-                        <div className="image-title"><h3>{data.title}</h3></div>
-                        <div className="image-country"><h6>{data.country}</h6></div>
+                          <div className="image-title"><h3>{data.title}</h3></div>
+                          <div className="image-country"><h6>{data.country}</h6></div>
                     </div>
                     <p
                         className="username-part"
@@ -143,7 +143,8 @@ function ExperienceDetails() {
                                     <>
                                     {currentUser.userName == e.user.username ? (
                                         <>
-                                            <button 
+                                        <ul>
+                                            <li 
                                                 type="submit"
                                                 className="delete-btn22"
                                                 onClick={()=>{handleDelete(e.id)}}
@@ -151,9 +152,9 @@ function ExperienceDetails() {
                     
                                               <i className="fa fa-trash-o"> </i>
               
-                                            </button>
+                                            </li>
                                     
-                                            <button
+                                            <li
                                                 type="submit"
                                                 className="edit-btn2"
                                                 onClick={() => {handleUpdate(e.id)}}
@@ -161,7 +162,8 @@ function ExperienceDetails() {
 
                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
               
-                                            </button>
+                                            </li>
+                                        </ul>
                                         </>
                                         ) : (
                                             ''
@@ -180,6 +182,7 @@ function ExperienceDetails() {
                                                 onChange={handleBody}
                                             />      
                                             </li>
+                                            <br />
                                             <br />
                                         </ul>
 

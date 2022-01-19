@@ -84,12 +84,13 @@ li a {
 /* Footer Style Start */
 
 .footer-distributed {
-  background: rgb(228, 228, 228);
+  background: rgb(241, 239, 239);
 	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
 	font: bold 16px sans-serif;
 	padding: 50px 50px;
+  margin-top:30px;
 }
 
 .footer-distributed .footer-left,
@@ -728,8 +729,8 @@ label {
   left: 28%;
   transform: translate(-50%, -50%);
   font-size: 35px;
-  /* background: rgba(254, 254, 254, 0.308); */
   border-radius: 10px;
+  padding-top: 0px;
 }
 
 .image-country {
@@ -856,14 +857,14 @@ label {
 
 .edit-btn2 {
   background-color: white;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
   margin-right: 105px;
   border:none;
   outline:none;
   text-align: center;
   border-radius: 2px; 
-  left: 56.5%;
+  left: 55.5%;
   position: absolute;
 }
 
