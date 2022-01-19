@@ -64,6 +64,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+				
+					<mainClass>demo (11).demo.src.main.java.com.example.demo.DemoApplication</mainClass>
+				</configuration>
 			</plugin>
 
 			<plugin>
